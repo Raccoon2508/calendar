@@ -1,0 +1,11 @@
+.buttons-panel{
+    display:flex;
+    width:100%;
+    justify-content: space-between;
+}
+
+.nav-block, .date-block{
+    display:flex; 
+    width:200px;       
+
+}
