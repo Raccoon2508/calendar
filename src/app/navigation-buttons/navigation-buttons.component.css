@@ -1,0 +1,41 @@
+.buttons-panel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.nav-block, .date-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 200px;
+}
+
+.selected {
+  color: red;
+}
+
+.switcher-coruasel {
+  width: 180px;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0px;
+  border: 1px solid lightgrey;
+}
+
+.switcher-coruasel .year {
+  padding: 20px;
+}
+
+.switcher-coruasel .month {
+  text-align: center;
+  width: 100px;
+  padding: 20px 0px;
+}
+/*# sourceMappingURL=navigation-buttons.component.css.map */

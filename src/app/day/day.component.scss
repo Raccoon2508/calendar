@@ -1,0 +1,61 @@
+.day{
+    margin:0px;
+    height:100%;
+    width:100%;
+    background-color:rgb(204, 204, 204);
+    position:relative;
+    box-shadow: 5px 5px 5px 0;
+    color: rgb(64, 64, 64);
+  }
+  
+  .day-number{
+    
+    font-weight:bold;
+    font-size:50px;
+    position:absolute;
+    right:5px;
+      
+  }
+  
+  .events-panel{
+    position: absolute;
+    height:50px;
+    width:100%;
+    bottom:0px;
+    left:0px;
+    margin:5px;
+    
+  }
+  .events-counter{
+    display:flex;
+    position: absolute;
+    top:20px;
+    left:0px;
+    
+  }
+  
+  .events-name{
+    position:absolute;
+    text-transform: uppercase;
+    font-weight:bold;
+    
+  }
+  
+  .event-symbol{
+    border-radius:50%;
+    height:10px;
+    width:10px;
+    
+    top:15px;
+    margin:2px 2px;
+  }
+  
+  
+  
+  .green{
+    background-color:rgb(4, 79, 9);
+  }
+  .yellow{
+     background-color:rgb(4, 79, 9);
+  }
+  

@@ -1,0 +1,8 @@
+.bar{
+    width:100%;
+    
+    outline: 1px solid red;
+    color:black;
+    font-size: 50px;
+
+}
