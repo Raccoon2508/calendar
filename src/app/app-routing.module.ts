@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'login', component: HeaderComponent },
   { path: 'day/:id', component: DaySheduleComponent},
   { path: 'day/:id/:eventId', component: EventRedactorComponent},
+  { path: 'day/:id/newEvent', component: EventRedactorComponent}
 ];
 
 @NgModule({

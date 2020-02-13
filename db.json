@@ -1,39 +1,46 @@
 {
   "Nikita": {
-    "id": "1",
     "day20200210": {
-      "time0800": {
-        "id": "0800",
-        "timeFrom": "0800",
-        "timeTo": "0900",
-        "title": "job",
-        "comment": "Blablabla",
-        "priority": "low",
-        "person": "alone"
+      "time12:12": {
+        "timeFrom": "12:12",
+        "timeTo": "12:12",
+        "title": "werwer",
+        "comment": "werwer",
+        "priority": "normal"
       },
-      "time0900": {
-        "id": "0900",
-        "timeFrom": "0900",
-        "timeTo": "1000",
-        "title": "job",
-        "comment": "Blablabla",
-        "priority": "high",
-        "person": "alone"
+      "time23:34": {
+        "timeFrom": "23:34",
+        "timeTo": "23:23",
+        "title": "234234234",
+        "comment": "234234234234",
+        "priority": ""
       },
-      "time1000": {
-        "id": "1000",
-        "timeFrom": "1000",
-        "timeTo": "1100",
-        "title": "job",
-        "comment": "Blablabla",
-        "priority": "high",
-        "person": "alone"
+      "time23:23": {
+        "timeFrom": "23:23",
+        "timeTo": "23:42",
+        "title": "ertedrgfdfg",
+        "comment": "dfgdfgdg",
+        "priority": "high"
       },
-      "time1234": {
-        "timeFrom": "1234",
-        "timeTo": "1243",
-        "title": "124124",
-        "comment": "124",
+      "time03:45": {
+        "timeFrom": "03:45",
+        "timeTo": "03:45",
+        "title": "",
+        "comment": "",
+        "priority": ""
+      },
+      "time": {
+        "timeFrom": "",
+        "timeTo": "",
+        "title": "",
+        "comment": "",
+        "priority": ""
+      },
+      "time05:06": {
+        "timeFrom": "05:06",
+        "timeTo": "04:56",
+        "title": "3456345634",
+        "comment": "34564356",
         "priority": ""
       }
     }

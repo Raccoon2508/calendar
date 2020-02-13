@@ -14,6 +14,7 @@ export class EventRedactorComponent implements OnInit {
   dayId;
   eventId;
   formCheck; 
+  dataForForm: Config;
   
   profileForm = new FormGroup({
     
@@ -29,10 +30,13 @@ export class EventRedactorComponent implements OnInit {
     console.log(this.profileForm.value);
   }
 
-  postEvent(){
+  addEvent(){
     let currEvent: Config = this.profileForm.value
     let dayData;
     let eventsData;
+    
+    
+    
     
     function checkProfileForm(currEvent){
       let timFrom = this.profileForm.value.timeFrom;
@@ -53,26 +57,67 @@ export class EventRedactorComponent implements OnInit {
       return;
     }
 
-  console.log(dayData);
-  console.log(this.formCheck);  
+    console.log(dayData);
+    console.log(this.formCheck);  
 
-  this.configService.postConfig('http://localhost:4000/Nikita/', dayData)
-});  
-     
-    
+    this.configService.postConfig('http://localhost:4000/Nikita/', dayData)
+    });  
   }
+
+  editEvent(){
+    let dayData;
+    let eventsData;
+
+    
+    
+    this.configService.getConfig().subscribe(data => {dayData = Object.assign(data);
+      eventsData = data['day'+this.dayId];
+      if(!eventsData['time' + currEvent.timeFrom]){
+        eventsData['time' + currEvent.timeFrom] = currEvent;
+    } else {
+      this.formCheck = "Busy time";
+      return;
+    }
+
+    this.configService.postConfig('http://localhost:4000/Nikita/', dayData)
+    });  
+  }
+
+  loadEventToForm(){
+    let dayData;
+    let eventsDayData;
+    let eventsTimeData;
+    if(this.eventId === "newEvent"){
+      this.dataForForm = {
+        "timeFrom": "",
+        "timeTo": "",
+        "title": "",
+        "comment": "",
+        "priority": ""
+      }
+       return};
+
+    this.configService.getConfig().subscribe(data => {dayData = Object.assign(data);
+      eventsDayData = data['day'+this.dayId];
+    if(!eventsDayData['time'+this.eventId]){
+      console.log(this.eventId);
+      return}
+    eventsTimeData = eventsDayData['time'+this.eventId];
+    this.dataForForm = Object.assign(eventsTimeData);
+    console.log('dataform',this.dataForForm);
+   });
+  }
+
+
 
   ngOnInit() {
     this.routeParams = this.route.params.subscribe(data=>{
       this.dayId = data.id;
       this.eventId = data.eventId;
       console.log(`${this.dayId} ${this.eventId}`)
-
-
-    }
-      );
-    console.log()
-
-
+    });
+    this.loadEventToForm()
+    
+    
   }
 }

@@ -1,5 +1,3 @@
-<p>Здесь должно быть рассписание дня</p>
-<a [routerLink]="['../../']" class = "back-button"> <button>Back</button></a>
 <div class="events">
   <div
     class="event"
@@ -12,7 +10,9 @@
     <p>{{event.priority}}</p>
     <p>{{event.eventId}}</p>
     <button class="delete" >Delete</button>
-    <a [routerLink]="['./',event.eventId]"><button class="edit" >Edit</button></a>
+    <a [routerLink]="['./',event.timeFrom]"><button class="edit" >Edit</button></a>
    
   </div>
+  <a [routerLink]="['../../']" class = "back-button"> <button>Back to calendar</button></a>
+  <a [routerLink]="['./newEvent']" class = "add-button" > <button>Add new event</button></a>
 </div>

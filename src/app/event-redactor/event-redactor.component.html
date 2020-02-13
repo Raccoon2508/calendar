@@ -2,37 +2,46 @@
   
   <h1 class="event-title">Day, from</h1>
   
-  <label >Time from: <input id="timeFrom" formControlName="timeFrom"/></label>
+  <label >Time from: <input required name="name" type="time"
+     id="timeFrom" 
+     formControlName="timeFrom" 
+     [value] ="dataForForm.timeFrom"
+     minlength="4"
+     
+     /></label>
   
-  <label for="timeTo">Time to: <input id="timeTo" type="text" formControlName="timeTo"/></label>
+  <label for="timeTo">Time to: <input required type="time" id="timeTo" formControlName="timeTo" [value] ="dataForForm.timeTo"/></label>
   
-  <label for="title">Title:<input id="title" type="text" formControlName="title"/></label>
+  <label for="title">Title:<input required id="title" type="text" formControlName="title" [value] ="dataForForm.title"/></label>
 
-  <label for="comment">Title:<textarea formControlName="comment"></textarea></label>
+  <label for="comment">Title:<textarea formControlName="comment" [value] ="dataForForm.comment" minlength="4"></textarea></label>
   
   <h3>Priority</h3>
   <div>
     <input
       type="radio"
-      name="eventPriority"
-      value="High"
+      value="high"
+      formControlName="priority"
+      [checked] = "dataForForm.priority==='high'"
       />
     <label for="contactChoice1">High</label>
 
     <input
       type="radio"
-      name="eventPriority"
       value="normal"
+      formControlName="priority"
+      [checked] = "dataForForm.priority==='normal'||dataForForm.priority===''"
       />
     <label for="normal">Normal</label>
 
     <input
       type="radio"
-      name="eventPriority"
       value="low"
+      formControlName="priority"
+      [checked] = "dataForForm.priority==='low'"
       />
     <label for="low">Low</label>
   </div>
-  <button (click)="postEvent()">Save</button>
+  <input type="submit" value="Save" (click)="addEvent()">
   <button [routerLink]="['../']">Back</button>
 </form>
