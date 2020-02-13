@@ -1,6 +1,18 @@
-<p>Здесь должно быть рассписание дня  {{id}}</p>
-<button class="button" (click)= "showConfig()">Get info</button>
-<p *ngIf ="data">{{data.title}}</p>>
-
-<a [routerLink]="'/'"> back </a>
-
+<p>Здесь должно быть рассписание дня</p>
+<a [routerLink]="['../../']" class = "back-button"> <button>Back</button></a>
+<div class="events">
+  <div
+    class="event"
+    *ngFor="let event of eventsArray"
+    [class.high]="event.priority === 'high'"
+  >
+    <p>{{event.timeFrom}}</p>
+    <p>{{event.timeTo}}</p>
+    <p>{{event.title}}</p>
+    <p>{{event.priority}}</p>
+    <p>{{event.eventId}}</p>
+    <button class="delete" >Delete</button>
+    <a [routerLink]="['./',event.eventId]"><button class="edit" >Edit</button></a>
+   
+  </div>
+</div>

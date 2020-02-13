@@ -1,9 +1,41 @@
 {
-  "posts": [
-    { "id": 1, "title": "json-server", "author": "typicode" }
-  ],
-  "comments": [
-    { "id": 1, "body": "some comment", "postId": 1 }
-  ],
-  "profile": { "name": "typicode" }
+  "Nikita": {
+    "id": "1",
+    "day20200210": {
+      "time0800": {
+        "id": "0800",
+        "timeFrom": "0800",
+        "timeTo": "0900",
+        "title": "job",
+        "comment": "Blablabla",
+        "priority": "low",
+        "person": "alone"
+      },
+      "time0900": {
+        "id": "0900",
+        "timeFrom": "0900",
+        "timeTo": "1000",
+        "title": "job",
+        "comment": "Blablabla",
+        "priority": "high",
+        "person": "alone"
+      },
+      "time1000": {
+        "id": "1000",
+        "timeFrom": "1000",
+        "timeTo": "1100",
+        "title": "job",
+        "comment": "Blablabla",
+        "priority": "high",
+        "person": "alone"
+      },
+      "time1234": {
+        "timeFrom": "1234",
+        "timeTo": "1243",
+        "title": "124124",
+        "comment": "124",
+        "priority": ""
+      }
+    }
+  }
 }

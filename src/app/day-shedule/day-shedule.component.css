@@ -1,0 +1,10 @@
+.event {
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid red;
+  }
+  
+  .high {
+    background-color: red;
+  }
+  

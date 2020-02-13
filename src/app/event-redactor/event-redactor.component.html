@@ -1,0 +1,38 @@
+<form [formGroup]="profileForm">
+  
+  <h1 class="event-title">Day, from</h1>
+  
+  <label >Time from: <input id="timeFrom" formControlName="timeFrom"/></label>
+  
+  <label for="timeTo">Time to: <input id="timeTo" type="text" formControlName="timeTo"/></label>
+  
+  <label for="title">Title:<input id="title" type="text" formControlName="title"/></label>
+
+  <label for="comment">Title:<textarea formControlName="comment"></textarea></label>
+  
+  <h3>Priority</h3>
+  <div>
+    <input
+      type="radio"
+      name="eventPriority"
+      value="High"
+      />
+    <label for="contactChoice1">High</label>
+
+    <input
+      type="radio"
+      name="eventPriority"
+      value="normal"
+      />
+    <label for="normal">Normal</label>
+
+    <input
+      type="radio"
+      name="eventPriority"
+      value="low"
+      />
+    <label for="low">Low</label>
+  </div>
+  <button (click)="postEvent()">Save</button>
+  <button [routerLink]="['../']">Back</button>
+</form>
