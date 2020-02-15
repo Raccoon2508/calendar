@@ -67,7 +67,7 @@ export class EventRedactorComponent implements OnInit {
   editEvent(){
     let dayData;
     let eventsData;
-
+/*
     
     
     this.configService.getConfig().subscribe(data => {dayData = Object.assign(data);
@@ -80,7 +80,7 @@ export class EventRedactorComponent implements OnInit {
     }
 
     this.configService.postConfig('http://localhost:4000/Nikita/', dayData)
-    });  
+    });  */
   }
 
   loadEventToForm(){

@@ -7,18 +7,19 @@
     <div class= "days-panel">
       
         <div class='day' *ngFor="let day of calendarRebuild()">
-            <a [routerLink]="['/day', day.id]" class="day" data ="day.id">
+            <a [routerLink]="['/day', day.id]" class="day" >
               <p class="day-number" *ngIf = "day.num">
                 {{ dayID }}
                 {{ day.num }}
               </p>
+              <p class="events-name">Events</p>
               <div class="events-panel">
-                <p class="events-name">Events</p>
-                <div class="events-counter">
+                
+                
                   <div class="event-symbol red"></div>
                   <div class="event-symbol green"></div>
                   <div class="event-symbol yellow"></div>
-                </div>
+                
               </div>
             </a>
         </div>

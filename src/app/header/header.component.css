@@ -1,7 +1,98 @@
-.bar {
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+p {
+  font-size: 2em;
+  padding: 0px;
+  line-height: 0.9;
+  margin: 10px;
+}
+
+.header {
   width: 100%;
-  outline: 1px solid red;
-  color: black;
-  font-size: 50px;
+  min-height: 190px;
+  background-color: #bbded6;
+  font-weight: bold;
+  border: 1px solid transparent;
+  position: relative;
+}
+
+.header .infoblock {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  right: 2%;
+  text-align: right;
+}
+
+.login-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid transparent;
+  margin-left: 15px;
+  max-width: 200px;
+}
+
+label p {
+  width: 60px;
+  font-size: 12px;
+}
+
+label input {
+  margin-left: 15px;
+  line-height: 20px;
+  width: 50%;
+}
+
+button {
+  margin-left: 15px;
+  padding: 5px;
+}
+
+.username {
+  display: none;
+  position: relative;
+  height: 26px;
+}
+
+.username button {
+  vertical-align: middle;
+}
+
+.username .logout {
+  margin-bottom: 10px;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.logout {
+  margin: 3px;
 }
 /*# sourceMappingURL=header.component.css.map */

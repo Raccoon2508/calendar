@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+form {
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #bbded6;
+  color: #616161;
+  font-weight: bold;
+  padding: 20px;
+}
+
+form h1 {
+  text-align: center;
+}
+
+form label {
+  margin-top: 15px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+form label input {
+  position: absolute;
+  width: 100px;
+  left: 150px;
+}
+
+form .form-button-block {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+form .form-button-block input, form .form-button-block button {
+  position: relative;
+  left: 0px;
+  width: 60px;
+  padding: 10px 12px;
+  margin: 5px;
+}
+/*# sourceMappingURL=new-user.component.css.map */

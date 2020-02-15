@@ -16,6 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { EventRedactorComponent } from './event-redactor/event-redactor.component'
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { EventEditorComponent } from './event-editor/event-editor.component';
+import { NewUserComponent } from './new-user/new-user.component';
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     DaySheduleComponent,
     ExampleComponentComponent,
     EventRedactorComponent,
+    EventEditorComponent,
+    NewUserComponent,
   ],
   imports: [
     BrowserModule,

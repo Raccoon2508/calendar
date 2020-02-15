@@ -4,7 +4,6 @@ import { HttpHeaders } from '@angular/common/http';
 
 
 export interface Config {
-  id: string;
   timeFrom: string;
   timeTo: string;
   title: string;
@@ -29,7 +28,7 @@ export class ConfigService {
 
   postConfig (dayUrl, event:Config){
     
-    return this.http.post(dayUrl, event, {
+    return this.http.put(dayUrl, event, {
       headers: new HttpHeaders().set('Content-Type', 'application/json'),
       responseType: 'text'
     }).toPromise();

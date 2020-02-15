@@ -17,6 +17,7 @@ export class DaySheduleComponent implements OnInit {
   eventsArray: Config[];
   eventHighPriority;
   eventPriority;
+  eventId;
  
 
   constructor(private configService: ConfigService, private route: ActivatedRoute) {}
@@ -37,7 +38,6 @@ export class DaySheduleComponent implements OnInit {
           comment: event["comment"],
           priority: event["priority"]
         };
-
         return item;
       });
       console.log(events);

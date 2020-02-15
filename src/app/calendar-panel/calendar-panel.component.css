@@ -1,41 +1,106 @@
-.calendar-panel{
-    width:1000px;
-    outline:1px solid red;
-    
-
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
-.week-panel{
-    display:flex;
-    width:100%;
-    
+.week-panel {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  background-color: #bbded6;
 }
 
-.weekday{
-    background-color: blue;
-    color:white;
-    font-size: 25px;
-    font-weight: bold;
-    width:100%;
-    border:2px solid gray;
-    text-align: center;
-    
-
+.week-panel .weekday {
+  width: 200px;
+  min-width: 50px;
+  text-align: center;
 }
 
-
-.days-panel{
-    display: grid;
-    grid-gap: 0px;
-    height: 1000px;
-    width:100%;
-    grid-template-columns: auto auto auto auto auto auto auto;
-
+.week-panel .weekday .weekday-name {
+  font-size: 20px;
+  border: 1px solid #8ac6d1;
+  padding: 10px 3px;
+  overflow: hidden;
 }
 
-.day{
- border:1px solid grey;
- margin-left: -1px;
- margin-top: -1px;
-
+@media (max-width: 500px) {
+  .week-panel .weekday .weekday-name {
+    font-size: 12px;
+  }
 }
+
+.days-panel {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 0px;
+  height: 600px;
+  max-width: 1200px;
+  -ms-grid-columns: auto auto auto auto auto auto auto;
+      grid-template-columns: auto auto auto auto auto auto auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.days-panel .day {
+  border: 1px solid #8ac6d1;
+  height: 100px;
+  background-color: #ceefe4;
+  position: relative;
+}
+
+.days-panel .day-number {
+  position: absolute;
+  font-size: 35px;
+  right: 5px;
+}
+
+a.day {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+
+.events-panel {
+  position: absolute;
+  height: 40px;
+  bottom: 0px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.events-panel .event-symbol {
+  height: 50%;
+  width: 10%;
+}
+
+.events-panel .event-symbol.high {
+  background-color: #ffb6b9;
+}
+
+.events-panel .event-symbol.normal {
+  background-color: #FFF5C3;
+}
+
+.events-panel .event-symbol.low {
+  background-color: #D3E397;
+}
+
+.events-name {
+  position: absolute;
+  bottom: 45px;
+  left: 2%;
+}
+/*# sourceMappingURL=calendar-panel.component.css.map */

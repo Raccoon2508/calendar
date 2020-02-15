@@ -13,7 +13,7 @@
         "timeTo": "23:23",
         "title": "234234234",
         "comment": "234234234234",
-        "priority": ""
+        "priority": "low"
       },
       "time23:23": {
         "timeFrom": "23:23",
@@ -27,20 +27,27 @@
         "timeTo": "03:45",
         "title": "",
         "comment": "",
-        "priority": ""
+        "priority": "low"
       },
       "time": {
         "timeFrom": "",
         "timeTo": "",
         "title": "",
         "comment": "",
-        "priority": ""
+        "priority": "normal"
       },
       "time05:06": {
         "timeFrom": "05:06",
         "timeTo": "04:56",
         "title": "3456345634",
         "comment": "34564356",
+        "priority": "high"
+      },
+      "time12:03": {
+        "timeFrom": "12:03",
+        "timeTo": "12:34",
+        "title": "sadsadva",
+        "comment": "asdvadvasdv",
         "priority": ""
       }
     }

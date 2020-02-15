@@ -1,5 +1,29 @@
-<div class = "bar header">
-    <p class="footer-copyrights">
-        Hello, user!
+<div class = "header" >
+    <div class = "infoblock">
+     
+      
+    <p class = "date">
+        {{currentDate.currentDay}} {{currentDate.currentMonth}} {{currentDate.currentYear}}
     </p>
-</div>
+  
+    <div class="time">
+       <p>{{currentDate.currentHours}}:{{currentDate.currentMinutes}}</p>
+    </div>
+  
+     <form class = "login-form" [class.hide]="confirmed" [formGroup]="loginForm">
+           <label><p>Login</p><input type="text" class="name" formControlName="login"></label>
+            <label><p>Password</p> <input type="password" class="name" formControlName="password"></label>
+            <div class="button-block">
+              <button (click)="login()">Login</button>
+              <button>New User</button>
+            </div>
+     </form>
+    <div class = "hello-user-block" >
+    <p class = "username" [class.show]="confirmed"> {{ currentUser}}'s calendar
+      <button class="logout" (click)="logout()">Logout</button>
+    </p>
+    </div>
+    </div>
+  </div>
+  
+  

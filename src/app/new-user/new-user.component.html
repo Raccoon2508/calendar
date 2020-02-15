@@ -1,0 +1,33 @@
+<form [formGroup]="newUser">
+  
+    <h1 class="new-user-title">New User</h1>
+    
+    <label for="login" class="login">Login:
+      <input required
+      id="login"
+      type="text"
+      formControlName="login"
+      maxlength="35">
+    </label>
+    
+    <label for="password" class="password">Password:
+      <input required
+      id="password"
+      type="password"
+      formControlName="password"
+      maxlength="35">
+    </label>
+  
+    <label for="password" class="confirm-password">Confirm Password:
+      <input required
+      id="password"
+      type="password"
+      formControlName="password"
+      maxlength="35">
+    </label>
+   
+    <div class="form-button-block">
+      <button value="Save" (click)="addEvent()">Save</button>
+      <button [routerLink]="['../']">Back</button>
+    </div>  
+  </form>
