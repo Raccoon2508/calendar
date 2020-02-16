@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { MonthNames } from '../monthNames';
 
 @Component({
@@ -9,8 +9,8 @@ import { MonthNames } from '../monthNames';
 export class NavigationButtonsComponent implements OnInit {
   monthNamesArr;
   currentMonthName;
-  @Input() currentYear;
-  @Input() currentMonthNumber;
+  @Output() currentYear;
+  @Output() currentMonthNumber;
   yearSwitcherCounter;
   
   constructor() {
@@ -30,6 +30,7 @@ export class NavigationButtonsComponent implements OnInit {
 
     this.currentMonthNumber = ((this.currentMonthNumber - 1) + 12) % 12;
     this.currentMonthName = this.monthNamesArr[this.currentMonthNumber];
+    localStorage.setItem('currentMonth', this.currentMonthNumber);
     return this.currentMonthNumber;
 
   }
@@ -40,29 +41,53 @@ export class NavigationButtonsComponent implements OnInit {
     }
     this.currentMonthNumber = (this.currentMonthNumber + 1) % 12;
     this.currentMonthName = this.monthNamesArr[this.currentMonthNumber];
-    
+    localStorage.setItem('currentMonth', this.currentMonthNumber);
      return this.currentMonthNumber;
   }
 
   leftYearSwither(){
     this.yearSwitcherCounter--;
     this.currentYear = this.yearSwitcherCounter;
+    localStorage.setItem('currentYear', this.currentYear);
     return this.currentYear;
   }
   
   rightYearSwither(){
     this.yearSwitcherCounter++;
     this.currentYear = this.yearSwitcherCounter;
+    localStorage.setItem('currentYear', this.currentYear);
     return this.currentYear;
+  }
+
+  currentMonthSwitcher(){
+    localStorage.removeItem('currentMonth');
+    localStorage.removeItem('currentYear');
+    this.ngOnInit();
+  
   }
 
   
     ngOnInit() {
-      this.yearSwitcherCounter = 2020;
-      this.currentMonthName = this.monthNamesArr[0];
+      
+      let currentDate = new Date();
+      this.currentMonthNumber = currentDate.getMonth();
+      this.currentMonthName = this.monthNamesArr[this.currentMonthNumber];
+
+      this.yearSwitcherCounter = currentDate.getFullYear(); 
       this.currentYear = this.yearSwitcherCounter;
-      this.currentMonthNumber = 0;
+    if(!localStorage.getItem('currentMonth')) { 
+       
+      
+    } else {
+      this.currentMonthNumber = localStorage.getItem('currentMonth');
+      this.currentMonthName = this.monthNamesArr[localStorage.getItem('currentMonth')];
+    }
+    if(!localStorage.getItem('currentYear')) { 
+      
 
+    } else {
+      this.yearSwitcherCounter = localStorage.getItem('currentYear');
+      this.currentYear = this.yearSwitcherCounter;
+    }
   }
-
 }

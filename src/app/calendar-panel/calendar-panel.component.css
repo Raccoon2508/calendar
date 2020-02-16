@@ -69,6 +69,12 @@ a.day {
   z-index: 100;
 }
 
+.events-name {
+  position: absolute;
+  bottom: 45px;
+  left: 2%;
+}
+
 .events-panel {
   position: absolute;
   height: 40px;
@@ -81,26 +87,10 @@ a.day {
       flex-wrap: wrap;
 }
 
-.events-panel .event-symbol {
+.events-panel .events-container {
+  margin: 2%;
+  width: 20%;
   height: 50%;
-  width: 10%;
-}
-
-.events-panel .event-symbol.high {
-  background-color: #ffb6b9;
-}
-
-.events-panel .event-symbol.normal {
-  background-color: #FFF5C3;
-}
-
-.events-panel .event-symbol.low {
-  background-color: #D3E397;
-}
-
-.events-name {
-  position: absolute;
-  bottom: 45px;
-  left: 2%;
+  background-color: #696969;
 }
 /*# sourceMappingURL=calendar-panel.component.css.map */

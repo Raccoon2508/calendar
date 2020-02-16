@@ -14,8 +14,8 @@
            <label><p>Login</p><input type="text" class="name" formControlName="login"></label>
             <label><p>Password</p> <input type="password" class="name" formControlName="password"></label>
             <div class="button-block">
-              <button (click)="login()">Login</button>
-              <button>New User</button>
+              <button (click)="login()" [routerLink]="['']">Login</button>
+              <button [routerLink]="['/newUser']">New User</button>
             </div>
      </form>
     <div class = "hello-user-block" >

@@ -2,10 +2,18 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 100%;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  max-width: 1200px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  margin: 5px auto;
+  font-size: 20px;
+}
+
+.buttons-panel button {
+  font-size: 20px;
 }
 
 .nav-block, .date-block {
@@ -13,6 +21,8 @@
   display: -ms-flexbox;
   display: flex;
   width: 200px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .selected {
@@ -20,22 +30,26 @@
 }
 
 .switcher-coruasel {
-  width: 180px;
   height: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: 0px;
+  margin: 10px 20px;
   border: 1px solid lightgrey;
 }
 
 .switcher-coruasel .year {
-  padding: 20px;
+  border: 1px solid transparent;
+  padding: 15px;
 }
 
 .switcher-coruasel .month {
   text-align: center;
   width: 100px;
-  padding: 20px 0px;
+  padding: 15px 0px;
+}
+
+.current-month {
+  margin: 10px 22px;
 }
 /*# sourceMappingURL=navigation-buttons.component.css.map */

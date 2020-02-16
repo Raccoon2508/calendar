@@ -16,7 +16,7 @@ export class EventRedactorComponent implements OnInit {
   formCheck; 
   dataForForm: Config;
   
-  profileForm = new FormGroup({
+  newEventForm = new FormGroup({
     
     timeFrom: new FormControl(""),
     timeTo: new FormControl(""),
@@ -27,11 +27,15 @@ export class EventRedactorComponent implements OnInit {
   constructor(private configService: ConfigService, private route: ActivatedRoute) {}
 
   show() {
-    console.log(this.profileForm.value);
+    console.log(this.newEventForm.value);
   }
 
   addEvent(){
-    let currEvent: Config = this.profileForm.value
+    if(!localStorage.getItem('calendarUser')){
+      alert('You can save events only after login!');
+      return;
+    }
+    let currEvent: Config = this.newEventForm.value
     let dayData;
     let eventsData;
     
@@ -47,76 +51,44 @@ export class EventRedactorComponent implements OnInit {
       }
     }
     
-    this.configService.getConfig().subscribe(data => {dayData = Object.assign(data);
-    console.log('here', dayData)
-      eventsData = data['day'+this.dayId];
+    this.configService.getConfig().subscribe(data => {
+      let editedData = Object.assign(data);
+      let currentUser = localStorage.getItem('calendarUser');
+      let currentUserEvantsBase = data[currentUser];
+      eventsData = currentUserEvantsBase['day'+this.dayId];
       if(!eventsData['time' + currEvent.timeFrom]){
         eventsData['time' + currEvent.timeFrom] = currEvent;
     } else {
-      this.formCheck = "Busy time";
+      alert('Time Is Busy! Select other time!');
       return;
     }
 
-    console.log(dayData);
-    console.log(this.formCheck);  
-
-    this.configService.postConfig('http://localhost:4000/Nikita/', dayData)
+     this.configService.postConfig(`http://localhost:3000/eventsBase/`, editedData)
     });  
   }
 
-  editEvent(){
-    let dayData;
-    let eventsData;
-/*
-    
-    
-    this.configService.getConfig().subscribe(data => {dayData = Object.assign(data);
-      eventsData = data['day'+this.dayId];
-      if(!eventsData['time' + currEvent.timeFrom]){
-        eventsData['time' + currEvent.timeFrom] = currEvent;
-    } else {
-      this.formCheck = "Busy time";
+  
+
+  ngOnInit() {
+    if(!localStorage.getItem('calendarUser')){
+      alert('You can save events only after login!');
       return;
     }
 
-    this.configService.postConfig('http://localhost:4000/Nikita/', dayData)
-    });  */
-  }
-
-  loadEventToForm(){
-    let dayData;
-    let eventsDayData;
-    let eventsTimeData;
-    if(this.eventId === "newEvent"){
-      this.dataForForm = {
-        "timeFrom": "",
-        "timeTo": "",
-        "title": "",
-        "comment": "",
-        "priority": ""
-      }
-       return};
-
-    this.configService.getConfig().subscribe(data => {dayData = Object.assign(data);
-      eventsDayData = data['day'+this.dayId];
-    if(!eventsDayData['time'+this.eventId]){
-      console.log(this.eventId);
-      return}
-    eventsTimeData = eventsDayData['time'+this.eventId];
-    this.dataForForm = Object.assign(eventsTimeData);
-    console.log('dataform',this.dataForForm);
-   });
-  }
-
-
-
-  ngOnInit() {
     this.routeParams = this.route.params.subscribe(data=>{
       this.dayId = data.id;
-      this.eventId = data.eventId;
-      console.log(`${this.dayId} ${this.eventId}`)
+      
+
+      this.configService.getConfig().subscribe(data => {
+        let editedData = Object.assign(data);
+        let currentUser = localStorage.getItem('calendarUser');
+        let currentUserEvantsBase = data[currentUser];
+        if(!currentUserEvantsBase['day'+this.dayId]){
+          currentUserEvantsBase['day'+this.dayId]={};
+          };
+          this.configService.postConfig(`http://localhost:3000/eventsBase/`, editedData) 
+      })
     });
-    this.loadEventToForm()
     
     
   }

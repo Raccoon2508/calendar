@@ -1,12 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { weekDays } from '../weekDays';
 import {Router, ActivatedRoute, Params} from '@angular/router';
+import { Config, ConfigService } from '../config.service';
+import { NavigationButtonsComponent } from '../navigation-buttons/navigation-buttons.component'
 
 
 @Component({
   selector: 'app-calendar-panel',
   templateUrl: './calendar-panel.component.html',
-  styleUrls: ['./calendar-panel.component.css']
+  styleUrls: ['./calendar-panel.component.css'],
+  providers: [ConfigService],
 })
 export class CalendarPanelComponent implements OnInit {
   selectedId: number;
@@ -14,10 +17,46 @@ export class CalendarPanelComponent implements OnInit {
   @Input() currentYear;
   @Input() currentMonthNumber;
   currentDayNumber;
+  currentDayEventsCounter;
+  eventsArraysForEveryDay = [];
 
-  constructor() {
-    
+  constructor(private configService: ConfigService) {
   }
+
+
+  checkEvents(){
+    let dayIdArr = [];
+    function addZero(some:number){
+      if(some<10){
+        return '0'+some;
+      } else {
+        return '' + some;
+      }
+    }
+    let prefix = `day${this.currentYear}${addZero(this.currentMonthNumber)}`;
+    for(let i = 0; i<31; i++){
+      dayIdArr.push(prefix + addZero(i));
+
+    }
+    this.configService.getConfig().subscribe(data => {
+      
+      let currentUser = localStorage.getItem('calendarUser');
+      if(!data[currentUser]){return};
+      this.currentDayEventsCounter = Object.assign(data[currentUser]);
+       for(let i = 0; i < dayIdArr.length; i++){
+          if(this.currentDayEventsCounter[dayIdArr[i]]){
+            this.eventsArraysForEveryDay.push(Object.keys(this.currentDayEventsCounter[dayIdArr[i]]));
+          } else {
+            this.eventsArraysForEveryDay.push([]);
+          }
+          
+       } 
+       
+     });
+     
+   }
+  
+
 
   probeArr(num: number){
     let arr = new Array(num);
@@ -47,11 +86,12 @@ export class CalendarPanelComponent implements OnInit {
     return Math.floor(day + 31 * month / 12 + year + year / 4 - year / 100 + year / 400) % 7;
   }
 
-  
+  const counter = this.eventsArraysForEveryDay;
+
   function fillArray(n){
+    
     let month = m;
     let year = y;
-
 
     function dayIdCreating(currentDay){
     let stringDay = currentDay + '';
@@ -66,19 +106,20 @@ export class CalendarPanelComponent implements OnInit {
     return dayID;
   }
 
-
-    let resultArr = [];
+  let resultArr = [];
     for (let i = 1; i<=n; i++){
       resultArr.push({num: i,
       id: dayIdCreating(i),
+      events: counter[i],
       });
+      
      
     }
     
     return resultArr;
   }
-  
-  
+
+
   let weekDay = weekday(y, m, 0)
   let emptyWeekDays = new Array(weekDay);
   emptyWeekDays.fill({});
@@ -89,8 +130,6 @@ export class CalendarPanelComponent implements OnInit {
     return emptyWeekDays.concat(monthArray);
   }
 
-  
-  
   switch (m){
     case 0:
     case 2:
@@ -112,16 +151,9 @@ export class CalendarPanelComponent implements OnInit {
   
   }
 
- 
-
-
-
   ngOnInit() {
-    this.currentMonthNumber = 0;
-    this.currentYear = 2020;
+    this.checkEvents();
     this.calendarRebuild();
-
   }
-
 }
 

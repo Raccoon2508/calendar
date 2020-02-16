@@ -1,12 +1,19 @@
 .buttons-panel{
     display:flex;
-    width:100%;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width:1200px;
+    justify-content: start;
+    margin: 5px auto;
+    font-size: 20px;
+    button{
+        font-size: 20px;
+    }
 }
 
 .nav-block, .date-block{
     display:flex; 
-    width:200px;       
+    width:200px;  
+    justify-content: space-around;     
 
 }
 
@@ -15,20 +22,26 @@
 }
 
 .switcher-coruasel{
-    width:180px;
+   
     height:50px;
     display:flex;
-    margin:0px;
+    margin:10px 20px;
     border:1px solid lightgrey;
     .year{
-        padding:20px;
+        border:1px solid transparent;
+        padding:15px;
+        
     }
 
     .month{
         text-align: center;
         width:100px;
-        padding:20px 0px;
+        padding:15px 0px;
     }
 
 
+}
+
+.current-month{
+    margin:10px 22px;
 }

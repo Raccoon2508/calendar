@@ -15,23 +15,30 @@ export interface Config {
 export class ConfigService {
   event;
   dayUrl;
-  configUrl = "http://localhost:4000/";
-  userName = "Nikita";
-  loginUrl = `${this.configUrl}${this.userName}`;
+  configUrl = "http://localhost:3000/eventsBase";
+  
 
   
   constructor(private http: HttpClient) {}
 
   getConfig() {
-    return this.http.get(this.loginUrl);
+    return this.http.get(this.configUrl);
   }
 
   postConfig (dayUrl, event:Config){
-    
-    return this.http.put(dayUrl, event, {
+     return this.http.put(dayUrl, event, {
       headers: new HttpHeaders().set('Content-Type', 'application/json'),
       responseType: 'text'
     }).toPromise();
 
 }
+
+  postUser (dayUrl, user){
+    
+    return this.http.put(dayUrl, user, {
+      headers: new HttpHeaders().set('Content-Type', 'application/json'),
+      responseType: 'text'
+    }).toPromise();
+
+  }
 }
