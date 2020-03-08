@@ -18,7 +18,7 @@ import { EventRedactorComponent } from './event-redactor/event-redactor.componen
 import { ReactiveFormsModule } from '@angular/forms';
 import { EventEditorComponent } from './event-editor/event-editor.component';
 import { NewUserComponent } from './new-user/new-user.component';
-
+import { MainSheduleModule } from './main-shedule/main-shedule.module';
 
 @NgModule({
   declarations: [
@@ -27,18 +27,18 @@ import { NewUserComponent } from './new-user/new-user.component';
     FooterComponent,
     NavigationButtonsComponent,
     CalendarPanelComponent,
-    DayComponent,
     DaySheduleComponent,
     ExampleComponentComponent,
     EventRedactorComponent,
     EventEditorComponent,
-    NewUserComponent,
+    NewUserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MainSheduleModule
   ],
   exports: [RouterModule],
   providers: [HttpClientModule],

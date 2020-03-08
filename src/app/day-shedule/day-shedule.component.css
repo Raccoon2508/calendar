@@ -5,13 +5,6 @@
           box-sizing: border-box;
 }
 
-.events{
-  max-width:1200px;
-  margin-left:auto;
-  margin-right:auto;
-
-}
-
 .event {
   margin: 15px 10px;
   display: -webkit-box;

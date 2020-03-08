@@ -26,10 +26,7 @@ export class EventEditorComponent implements OnInit {
   });
   constructor(private configService: ConfigService, private route: ActivatedRoute) {}
 
-  show() {
-    console.log(this.profileForm.value);
-  }
-
+  
   addEvent(){
     if(!localStorage.getItem('calendarUser')){
       alert('You can save events only after login!');
@@ -39,21 +36,8 @@ export class EventEditorComponent implements OnInit {
     let dayData;
     let eventsData;
     
-    
-    
-    
-    function checkProfileForm(currEvent){
-      let timFrom = this.profileForm.value.timeFrom;
-      let timeTo = this.profileForm.value.timeTo;
-      let title = this.profileForm.value.title
-      if(!timFrom&&!timeTo&&!title){
-        this.formCheck = "Uncorrect";
-      }
-    }
-    
     this.configService.getConfig().subscribe(data => {dayData = Object.assign(data);
-    console.log('here', dayData)
-      eventsData = data['day'+this.dayId];
+     eventsData = data['day'+this.dayId];
       if(!eventsData['time' + currEvent.timeFrom]){
         eventsData['time' + currEvent.timeFrom] = currEvent;
     } else {
@@ -61,8 +45,6 @@ export class EventEditorComponent implements OnInit {
       return;
     }
 
-    console.log(dayData);
-    console.log(this.formCheck);  
 
     this.configService.postConfig('http://localhost:3000/Nikita/', dayData)
     });  
@@ -82,20 +64,7 @@ export class EventEditorComponent implements OnInit {
       this.configService.postConfig('http://localhost:3000/eventsBase/', editedData);
 
     });
-/*
-    
-    
-    this.configService.getConfig().subscribe(data => {dayData = Object.assign(data);
-      eventsData = data['day'+this.dayId];
-      if(!eventsData['time' + currEvent.timeFrom]){
-        eventsData['time' + currEvent.timeFrom] = currEvent;
-    } else {
-      this.formCheck = "Busy time";
-      return;
-    }
 
-    this.configService.postConfig('http://localhost:4000/Nikita/', dayData)
-    });  */
   }
 
   
@@ -104,7 +73,7 @@ export class EventEditorComponent implements OnInit {
     this.routeParams = this.route.params.subscribe(data=>{
       this.dayId = data.id;
       this.eventId = data.eventId;
-      console.log(`${this.dayId} ${this.eventId}`)
+      
     });
   }
 
