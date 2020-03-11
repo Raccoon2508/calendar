@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NavigationButtonsComponent } from './navigation-buttons.component';
+import { WeekComponent } from './week.component';
 
-describe('NavigationButtonsComponent', () => {
-  let component: NavigationButtonsComponent;
-  let fixture: ComponentFixture<NavigationButtonsComponent>;
+describe('WeekComponent', () => {
+  let component: WeekComponent;
+  let fixture: ComponentFixture<WeekComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavigationButtonsComponent ]
+      declarations: [ WeekComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NavigationButtonsComponent);
+    fixture = TestBed.createComponent(WeekComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
