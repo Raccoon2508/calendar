@@ -1,19 +1,7 @@
-<div class="events">
-  <h2>Events list for {{this.dayWeekDay}} {{this.dayMonth}} {{this.dayYear}}</h2>
+<button>Back</button>
+<button>Add new</button>
 
-  <div class="event"
-    *ngFor="let event of eventsArray"
-    [class.high]="event.priority === 'high'"
-    [class.low]="event.priority === 'low'"
-    [class.normal]="event.priority === 'normal'"
-  >
-    <p class="time-from">{{event.timeFrom}}</p>
-    <p class="time-to">{{event.timeTo}}</p>
-    <p class="title">{{event.title}}</p>
-    <button class="delete" (click) = "deleteEvent(event.timeFrom)">Delete</button>
-    <a (click)="notAvalble()"><button class="edit" >Edit</button></a>
-   
-  </div>
-  <a [routerLink]="['../../']" class = "back-button"> <button>Back to calendar</button></a>
-  <a [routerLink]="['./newEvent']" class = "add-button" > <button>Add new event</button></a>
-</div>
+<app-events-list></app-events-list>
+<app-edit-event-form></app-edit-event-form>
+
+<p >{{swissTime | date: 'hh:mm:ss'}}</p>

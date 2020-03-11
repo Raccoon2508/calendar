@@ -1,0 +1,18 @@
+<div>
+  <form class = "event-edit-form" [ngClass] = 'priority'>
+    <h2>Event edition</h2>
+    <label>Time From<input type = "time" class="timeFrom"></label>
+    <label>Time To <input type = "time" class="timeTo"></label>
+    <label>Title <input type = "text" class="title"></label>
+    <label>Comment <textarea class="title"></textarea></label>
+    <h3 >Priority</h3>
+    <label>High<input type = "radio" name="priority" value="high" (click)='high()'></label>
+    <label>Normal<input type = "radio" name="priority" value="normal" (click)='normal()'></label>
+    <label>Low<input type = "radio" name="priority" value="low" (click)='low()'></label>
+    <div class = "button-block">
+      <button type="submit" class="submit">Edit</button>
+      <button class="back">Back</button>
+    </div>  
+  </form>  
+
+</div>  

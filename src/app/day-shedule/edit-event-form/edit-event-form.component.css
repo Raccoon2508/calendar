@@ -1,0 +1,34 @@
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width:400px;
+  border:1px solid red;
+}
+
+label{
+  width:50%;
+  border: 1px solid blue;
+  display: flex;
+  justify-content: space-between;
+}
+
+input{
+  width:40%;
+}
+
+input.title, textarea{
+  width: 60%;
+}
+
+.low{
+  background-color: green;
+}
+
+.normal{
+  background-color: yellow;
+}
+
+.high{
+  background-color: red;
+}
