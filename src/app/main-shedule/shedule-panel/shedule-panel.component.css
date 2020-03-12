@@ -49,9 +49,7 @@
 }
 
 .days-panel .day {
-  border: 1px solid #8ac6d1;
   height: 100px;
-  background-color: #ceefe4;
   position: relative;
 }
 

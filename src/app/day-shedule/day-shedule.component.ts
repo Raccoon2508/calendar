@@ -9,20 +9,15 @@ import { buffer, bufferCount } from 'rxjs/operators'
 })
 
 export class DaySheduleComponent{
-  public swissTime;
-  
-  public time = new Observable<Date>(obs =>{
-    setInterval(()=>obs.next(new Date),1000)
-  }).pipe(
-    bufferCount(5)
-  ).subscribe((next)=>{
-   for(let i = 0; i < next.length; i++ ){
-     setTimeout(()=>{this.swissTime = next[i]},i*100)
-   }
-     
-  }
-  
-  )
+  public swissTime: Date;
+  public time: {} = new Observable<Date>(obs => {
+    setInterval(() => obs.next(new Date), 1000);})
+    .pipe(bufferCount(5))
+    .subscribe((next) => {
+      for (let i = 0; i < next.length; i++ ) {
+      setTimeout(() => {this.swissTime = next[i]}, i * 100);
+      }
+    });
 
   
 

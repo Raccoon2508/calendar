@@ -68,6 +68,9 @@ public ngOnInit(): void {
     this.currentMonthName = this.monthNamesArr[this.currentMonthNumber];
     this.yearSwitcherCounter = currentDate.getFullYear();
     this.currentYear = this.yearSwitcherCounter;
+    console.log(this.currentMonthNumber);
+    console.log(this.currentMonthName);
+
     if (localStorage.getItem('currentMonth')) {
       this.currentMonthNumber = +localStorage.getItem('currentMonth');
       this.currentMonthName = this.monthNamesArr[localStorage.getItem('currentMonth')];

@@ -1,0 +1,23 @@
+:host{
+    margin:0px;
+    padding:0px;
+}
+
+
+.day{
+    width:100%;
+    height:100%;
+    background-color: #81ada0;
+    border: 1px solid #0b272d;
+    box-sizing: border-box; 
+    .day-number{
+        font-size: 80px;
+        font-weight: bold;
+        margin:0px;
+    }
+    
+    .events-name{
+        margin-top: 0px;
+    }
+}
+

@@ -1,6 +1,12 @@
 <div class= "days-panel">
 
-    <app-day *ngFor="let day of sheduleArr; let i = index" [dayNumber] = "sheduleArr[i]"></app-day>
+    <app-day *ngFor="let day of sheduleArr; let i = index" 
+    [dayNumber] = "sheduleArr[i]"
+    [currentYear] = "currentYear"
+    [currentMonthNumber] = "currentMonthNumber"
+    >
+
+    </app-day>
       
     
 </div>  

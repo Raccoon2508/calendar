@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DayComponent } from '../day/day.component';
 import { CalendarService } from '../services/month-calendar.service';
+import { ConsoleReporter } from 'jasmine';
 
 
 @Component({
@@ -16,13 +17,12 @@ export class ShedulePanelComponent implements OnInit {
   constructor( private monthFirstDay: CalendarService) { }
 
   ngOnChanges() {
-    this.sheduleArr = this.monthFirstDay.monthRebuild(this.currentMonthNumber, this.currentYear);
-    console.log(this.currentMonthNumber);
+    this.sheduleArr = this.monthFirstDay.monthRebuild(this.currentYear, this.currentMonthNumber);
   }
 
   ngOnInit() {
-    this.sheduleArr = this.monthFirstDay.monthRebuild(this.currentMonthNumber, this.currentYear);
-    console.log(this.sheduleArr);
+    this.sheduleArr = this.monthFirstDay.monthRebuild(this.currentYear, this.currentMonthNumber);
+    console.log(this.currentMonthNumber);
   }
 
 }

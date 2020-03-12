@@ -8,10 +8,13 @@ import { puts } from 'util';
 })
 export class DayComponent implements OnInit {
   @Input() dayNumber;
+  @Input() currentMonthNumber;
+  @Input() currentYear;
 
   constructor() { }
 
   ngOnInit() {
+    console.log(this.currentMonthNumber)
   }
 
 }
