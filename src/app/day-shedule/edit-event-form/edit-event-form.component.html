@@ -1,18 +1,84 @@
-<div>
-  <form class = "event-edit-form" [ngClass] = 'priority'>
-    <h2>Event edition</h2>
-    <label>Time From<input type = "time" class="timeFrom"></label>
-    <label>Time To <input type = "time" class="timeTo"></label>
-    <label>Title <input type = "text" class="title"></label>
-    <label>Comment <textarea class="title"></textarea></label>
-    <h3 >Priority</h3>
-    <label>High<input type = "radio" name="priority" value="high" (click)='high()'></label>
-    <label>Normal<input type = "radio" name="priority" value="normal" (click)='normal()'></label>
-    <label>Low<input type = "radio" name="priority" value="low" (click)='low()'></label>
-    <div class = "button-block">
-      <button type="submit" class="submit">Edit</button>
-      <button class="back">Back</button>
+<div class="form-group">
+    <div class = 'addMessage' 
+    [class.show] = "addedMessage === true">
+      <h2>Event Added</h2>
     </div>  
-  </form>  
 
+
+    <h2>Edit Event</h2>
+    <label>Time From
+      <input
+      type = "time"
+      [(ngModel)]= "timeFrom"
+      #timeFromInput = 'ngModel'
+      [class.uncorrect] = "timeFromInput.touched && timeFromInput.invalid"
+      required>
+    </label>
+
+    <label>Time To
+       <input 
+       type = "time"
+       class="timeTo"
+       [(ngModel)]= "timeTo"
+       #timeToInput = 'ngModel'
+       [class.uncorrect] = "timeToInput.touched && timeToInput.invalid"
+       required>
+     </label>
+
+    <label>Title 
+      <input
+      type = "text"
+      class="title"
+      #titleInput ="ngModel"
+      [(ngModel)]= "title"
+      [class.uncorrect] = "titleInput.touched && titleInput.invalid"
+      maxlength = "32"
+      required
+      >
+    </label>
+
+    <label>Comment 
+      <textarea class="title" 
+      rows = "4"
+      [(ngModel)]= "comment"
+      required>
+      </textarea>
+    </label>
+    
+    <h3>Priority</h3>
+    <div class = "priority-radiobuttons">
+      <label>High
+        <input
+        type = "radio"
+        name="priority"
+        value="high"
+        [(ngModel)]= "priority">
+      </label>
+      
+      <label>Normal
+        <input type = "radio"
+        name="priority"
+        value="normal"
+        [(ngModel)]= "priority"
+        >
+      </label>
+      
+      <label>Low
+        <input
+        type = "radio"
+        name="priority"
+        value="low"
+        [(ngModel)]= "priority">
+      </label>
+    </div>
+    
+    <div class = "button-block">
+    <button type="submit"
+    class="submit"
+    (click)="onClick()"
+    [disabled]="timeFromInput.invalid || timeToInput.invalid || titleInput.invalid">
+    Save
+    </button>
+    <button class="back" (click)="goBack()">Back</button>
+    </div>  
 </div>  

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ConsoleReporter } from 'jasmine';
 
 @Injectable()
 
@@ -24,7 +23,8 @@ function weekday(yearX: number, monthX: number): number {
     month -= 2;
   }
   console.log('year', yearX);
-  console.log('zeroday', yearX, monthX, Math.floor(31 * month / 12 + yearX + yearX / 4 - yearX / 100 + yearX / 400) % 7 )
+  console.log('zeroday', yearX, monthX, Math.floor(31 * month /
+     12 + yearX + yearX / 4 - yearX / 100 + yearX / 400) % 7 );
   return Math.floor(31 * month / 12 + yearX + yearX / 4 - yearX / 100 + yearX / 400) % 7;
 }
 
@@ -40,13 +40,10 @@ switch (month) {
   case 7:
   case 9:
   case 11:
-    //console.log(weekday(year, month));
     return Array(weekday(year, month)).fill('').concat(fillArray(31));
   case 1:
-    //console.log(weekday(year, month));
     return Array(weekday(year, month)).fill('').concat(fillArray(28));
   default:
-    //console.log(weekday(year, month));
     return Array(weekday(year, month)).fill('').concat(fillArray(30));
  }
 }

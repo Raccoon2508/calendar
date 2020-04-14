@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 // import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -12,13 +12,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NewUserComponent } from './new-user/new-user.component';
 import { MainSheduleModule } from './main-shedule/main-shedule.module';
 import { DaySheduleModule } from './day-shedule/day-shedule.module';
+import { MainSheduleComponent } from './main-shedule/main-shedule.component';
+import { DaySheduleComponent } from './day-shedule/day-shedule.component';
+import { EventsDB } from './day-shedule/services/events.service';
+import { EventsListComponent  } from './day-shedule//events-list/events-list.component';
+import { AddEventFormComponent } from './day-shedule/add-event-form/add-event-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    NewUserComponent
+    NewUserComponent,
+    MainSheduleComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +35,7 @@ import { DaySheduleModule } from './day-shedule/day-shedule.module';
     DaySheduleModule
   ],
   exports: [RouterModule],
-  providers: [HttpClientModule],
+  providers: [HttpClientModule, EventsDB],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

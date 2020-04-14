@@ -1,4 +1,4 @@
-<div class="day" hoverDay>
+<div class="day" hoverDay (click) = "sheduleRouting(dayNumber, currentMonthNumber, currentYear)">
     <p class="day-number" *ngIf="dayNumber!==''">
       {{ dayNumber }}
     </p>

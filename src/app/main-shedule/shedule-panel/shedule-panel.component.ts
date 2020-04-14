@@ -1,8 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DayComponent } from '../day/day.component';
 import { CalendarService } from '../services/month-calendar.service';
-import { ConsoleReporter } from 'jasmine';
-
 
 @Component({
   selector: 'app-shedule-panel',
