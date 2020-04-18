@@ -52,7 +52,10 @@
         type = "radio"
         name="priority"
         value="high"
-        [(ngModel)]= "priority">
+        [(ngModel)]= "priority"
+        [checked]="priority===high"
+        >
+        
       </label>
       
       <label>Normal
@@ -60,6 +63,7 @@
         name="priority"
         value="normal"
         [(ngModel)]= "priority"
+        [checked]="priority===normal"
         >
       </label>
       
@@ -68,14 +72,16 @@
         type = "radio"
         name="priority"
         value="low"
-        [(ngModel)]= "priority">
+        [(ngModel)]= "priority"
+        [checked]="priority===high"
+        >
       </label>
     </div>
     
     <div class = "button-block">
     <button type="submit"
     class="submit"
-    (click)="onClick()"
+    (click)="saveEvent()"
     [disabled]="timeFromInput.invalid || timeToInput.invalid || titleInput.invalid">
     Save
     </button>

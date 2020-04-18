@@ -1,4 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { EventsDB } from '../services/events.service';
+import { MyEvent } from '../models/event';
+
 
 @Component({
   selector: 'app-single-event',
@@ -6,12 +10,25 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./single-event.component.css']
 })
 export class SingleEventComponent implements OnInit {
-  @Input() singleEvent
+  @Input() singleEvent;
+  @Input() eventId;
+  @Output() emmited: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+  constructor( private router: Router, private eventsServise: EventsDB) { }
+
+  public editEventFunc(): void {
+    this.router.navigate([this.singleEvent.id], {state: this.singleEvent});
+    console.log(this.singleEvent.id);
+  }
+
+  public deleteEvent(): void {
+    this.eventsServise.deleteEvent(this.singleEvent);
+    this.emmited.emit();
+    console.log(this.emmited);
+  }
 
   ngOnInit() {
-    console.log(this.singleEvent)
+    
   }
 
 }

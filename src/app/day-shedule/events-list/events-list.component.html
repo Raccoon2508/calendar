@@ -1,5 +1,5 @@
-<div class = "events-list">
+<div class = "events-list" >
 
-<app-single-event *ngFor = "let item of eventsDataBase" [singleEvent] = 'item'></app-single-event>
+<app-single-event *ngFor = "let item of eventsDataBase" [singleEvent] = 'item' (emmited) = "ngOnInit()"></app-single-event>
 
 </div>

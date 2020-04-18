@@ -15,17 +15,17 @@ export interface EventBase {
   }[];
 }
 
-export interface MyEvent {
-  id: number;
-  userId: number;
-  year: number;
-  month: number;
-  day: number;
-  timeFrom: string;
-  timeTo: string;
-  title: string;
-  comment: string;
-  priority: string;
+export class MyEvent {
+  public id: number = 0;
+  public userId: number = 0;
+  public year: number = 0;
+  public month: number = 0;
+  public day: number = 0;
+  public timeFrom: string = '';
+  public timeTo: string = '';
+  public title: string = '';
+  public comment: string = '';
+  public priority: string = '';
 }
 
 export interface EventUser {

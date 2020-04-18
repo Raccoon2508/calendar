@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { SingleEventComponent } from '../single-event/single-event.component';
 import { MyEvent } from '../models/event';
 import { EventsDB } from '../services/events.service';
@@ -11,7 +11,9 @@ import { EventBase } from '../models/event';
 })
 
 export class EventsListComponent implements OnInit {
-  public eventsDataBase: EventBase[];
+  @Input() emmited;
+
+  public eventsDataBase: MyEvent[];
   constructor(public eventsDb: EventsDB) { }
 
   public ngOnInit(): void {

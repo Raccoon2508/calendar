@@ -1,9 +1,9 @@
 import { MyEvent, EventBase } from '../models/event';
 import { Injectable } from '@angular/core';
 
-Injectable({
+@Injectable({
   providedIn: 'root',
-});
+})
 
 export class EventsDB {
       public eventsBase: EventBase = {
@@ -26,4 +26,20 @@ export class EventsDB {
         userId: 0,
         year: 2020}]
     };
+
+constructor() {}
+
+ public saveEvent(savedEvent: MyEvent): void {
+  this.eventsBase.events = this.eventsBase.events.map((item) => {
+    if (item.id === savedEvent.id) {
+      item = savedEvent;
+    }
+    console.log(item);
+    return item;
+  });
+ }
+ public deleteEvent(deletedEvent: MyEvent): void {
+  this.eventsBase.events = this.eventsBase.events.filter((item) => item.id !== deletedEvent.id);
+ console.log(this.eventsBase.events);
+}
 }
