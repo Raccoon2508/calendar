@@ -39,6 +39,7 @@ export class DaySheduleComponent {
 
   ngOnInit(){
     console.log(this.router.url);
+    
   }
 
   

@@ -3,6 +3,7 @@ import { MyEvent, EventUser, EventBase } from '../models/event';
 import { EventsDB } from '../services/events.service';
 import { Router } from '@angular/router';
 import {Location} from '@angular/common';
+import { DayState } from '../../services/dayState.service';
 
 @Component({
   selector: 'app-add-event-form',
@@ -41,18 +42,20 @@ export class AddEventFormComponent implements OnInit {
     eventID: 0
   };
 
-  constructor(private eventsDataBase: EventsDB, private router: Router, private location: Location) {}
+  constructor(private eventsDataBase: EventsDB,
+              private router: Router,
+              private location: Location,
+              private dayState: DayState) {}
 
   private goBack(): void {
-    console.log(this.router.url);
     this.location.back();
   }
 
   private onClick(): void {
     this.eventObj.id = Date.now();
-    this.eventObj.year = this.sheduleYear;
-    this.eventObj.month = this.sheduleMonth;
-    this.eventObj.day = this.sheduleYear;
+    this.eventObj.year = this.dayState.year;
+    this.eventObj.month = this.dayState.month;
+    this.eventObj.day = this.dayState.day;
     this.eventObj.timeFrom = this.timeFrom;
     this.eventObj.timeTo = this.timeTo;
     this.eventObj.title = this.title;
@@ -66,13 +69,8 @@ export class AddEventFormComponent implements OnInit {
     setTimeout(() => this.addedMessage = false, 2000);
     (this.eventsDataBase.eventsBase.events).push(Object.assign({}, this.eventObj));
     (this.eventsDataBase.eventsBase.usersEvents).push(this.connectionEventUser);
-
-    console.log(this.eventsDataBase.eventsBase.events);
-    console.log(this.eventsDataBase.eventsBase.usersEvents);
-
   }
   public ngOnInit(): void {
-    console.log('Im work')
   }
 
 }

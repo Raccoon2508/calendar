@@ -2,10 +2,11 @@
     <p class="day-number" *ngIf="dayNumber!==''">
       {{ dayNumber }}
     </p>
-    <p class="events-name" *ngIf="dayNumber!==''">Events</p>
+    
     <div class="events-panel">
+      <p class="events-name" *ngIf="dayNumber!==''">Events</p>
         <div class="events-container">
-          <div  class="event-symbol" class = "high"></div>
+          <div  class="event-symbol" class = "high" *ngFor = "let item of eventsStatusArray">*</div>
         </div>
     </div>
 </div>

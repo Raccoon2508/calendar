@@ -3,6 +3,7 @@ import { SingleEventComponent } from '../single-event/single-event.component';
 import { MyEvent } from '../models/event';
 import { EventsDB } from '../services/events.service';
 import { EventBase } from '../models/event';
+import { DayState } from '../../services/dayState.service';
 
 @Component({
   selector: 'app-events-list',
@@ -12,13 +13,16 @@ import { EventBase } from '../models/event';
 
 export class EventsListComponent implements OnInit {
   @Input() emmited;
+  public sheduleYear: number = this.dayState.year;
+  public sheduleMonth: number = this.dayState.month;
+  public sheduleDay: number = this.dayState.day;;
 
   public eventsDataBase: MyEvent[];
-  constructor(public eventsDb: EventsDB) { }
+  constructor(public eventsDb: EventsDB, public dayState: DayState) { }
 
   public ngOnInit(): void {
-    console.log(this.eventsDb.eventsBase.events);
-    this.eventsDataBase = this.eventsDb.eventsBase.events;
+    console.log(this.sheduleDay, this.sheduleMonth, this.sheduleYear);
+    this.eventsDataBase = this.eventsDb.loadEvents(this.sheduleDay, this.sheduleMonth, this.sheduleYear);
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, interval, from} from 'rxjs';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { DayState } from '../../services/dayState.service';
 
 @Component({
   selector: 'app-day-shedule-list',
@@ -9,25 +10,29 @@ import { Router } from '@angular/router';
 })
 export class DaySheduleListComponent implements OnInit {
   private currentUrl: string = this.router.url;
+  private currentDateObj: object;
+  private sheduleDay: number;
+  private sheduleMonth: number;
+  private sheduleYear: number;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,
+              private activeRoute: ActivatedRoute,
+              private dayState: DayState) {}
 
   public addRouting(): void {
-    console.log('MustAdd');
-    console.log(this.router.url);
     this.router.navigate([this.currentUrl, 'newEvent']);
-    
   }
 
   public goBack(): void {
-    this.router.navigate(['../'])
+    this.router.navigate(['../']);
   }
 
 public ngOnInit(): void {
-    
-  }
-public ngOnChanges(): void {
-  
+  this.sheduleDay = this.dayState.day;
+  this.sheduleMonth = this.dayState.month;
+  this.sheduleYear = this.dayState.year;
 }
+public ngOnChanges(): void {
 
+}
 }

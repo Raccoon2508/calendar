@@ -20,5 +20,16 @@
 
 .day .events-name {
   margin-top: 0px;
+  margin-right: 5px;
+}
+
+.day .events-panel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin: 0px 2px;
 }
 /*# sourceMappingURL=day.component.css.map */

@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.event {
+  margin: 15px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-weight: bold;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: lightgray;
+}
+
+.event .time-from {
+  width: 100px;
+}
+
+.event .time-to {
+  width: 100px;
+}
+
+.event .title {
+  width: 100px;
+  overflow: hidden;
+}
+
+.event button {
+  margin: 0 10px;
+}
+
+.event p {
+  margin: 5px 2%;
+}
+
+.high {
+  background-color: #ffb6b9;
+}
+
+.normal {
+  background-color: #FFF5C3;
+}
+
+.low {
+  background-color: #D3E397;
+}
+
+button {
+  margin: 10px;
+  padding: 5px;
+}
+
+.example {
+  width: 350px;
+  background-color: red;
+}
+/*# sourceMappingURL=day-shedule.component.css.map */

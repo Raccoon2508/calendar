@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { UrlObjectCommon } from 'url';
+import { DayState } from '../../services/dayState.service';
+import { EventsDB } from '../../day-shedule/services/events.service';
 
 @Component({
   selector: 'app-day',
@@ -11,17 +14,27 @@ export class DayComponent implements OnInit {
   @Input() private currentMonthNumber: number;
   @Input() private currentYear: number;
   private dayId: string;
+  public eventsStatusArray: string[];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, public dayState: DayState, private eventsStatus: EventsDB) {}
 
-  private sheduleRouting<T>(day: T, month: T, year: T): void {
+  public sheduleRouting<T>(day: T, month: T, year: T): void {
     this.dayId = `${year}${month}${day}`;
+    this.dayState.day = this.dayNumber;
+    this.dayState.month = this.currentMonthNumber;
+    this.dayState.year = this.currentYear;
+
     this.router.navigate(['day', this.currentYear, this.currentMonthNumber, this.dayNumber, 'table']);
-    console.log(this.router.url);
   }
 
   public ngOnInit(): void {
-    console.log(this.currentMonthNumber);
+    this.eventsStatusArray =
+         this.eventsStatus.eventsDayStatus(this.dayNumber, this.currentMonthNumber, this.currentYear);
+  }
+
+  public ngOnChanges(): void {
+    this.eventsStatusArray =
+    this.eventsStatus.eventsDayStatus(this.dayNumber, this.currentMonthNumber, this.currentYear);
   }
 
 }
