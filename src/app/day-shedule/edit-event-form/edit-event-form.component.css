@@ -4,11 +4,12 @@
     align-items: center;
     max-width:400px;
     position:relative;
-    background-color: #9fedd4;
+    background-color: #bbded6;
     font-family: 'Roboto', Arial, sans-serif;
     color: #616161;
     box-shadow: 2px 2px 2px 2px #616161;
-    
+    margin-left: auto;
+    margin-right: auto;
   
   }
   

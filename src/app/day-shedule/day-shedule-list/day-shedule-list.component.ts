@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, interval, from} from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DayState } from '../../services/dayState.service';
+import { MyEvent } from '../models/event';
 
 @Component({
   selector: 'app-day-shedule-list',
@@ -14,6 +15,7 @@ export class DaySheduleListComponent implements OnInit {
   private sheduleDay: number;
   private sheduleMonth: number;
   private sheduleYear: number;
+ 
 
   constructor(private router: Router,
               private activeRoute: ActivatedRoute,

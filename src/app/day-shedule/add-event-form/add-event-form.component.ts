@@ -26,7 +26,7 @@ export class AddEventFormComponent implements OnInit {
   private userId: number = 1;
   private eventObj: MyEvent = {
     id: 0,
-    userId: 0,
+    userId: 1,
     year: 0,
     month: 0,
     day: 0,
@@ -64,13 +64,16 @@ export class AddEventFormComponent implements OnInit {
 
     this.connectionEventUser.eventID = +this.eventObj.id;
     this.connectionEventUser.userID = +this.userId;
+    
 
     this.addedMessage = true;
     setTimeout(() => this.addedMessage = false, 2000);
-    (this.eventsDataBase.eventsBase.events).push(Object.assign({}, this.eventObj));
+    this.eventsDataBase.postEvent(this.eventObj);
     (this.eventsDataBase.eventsBase.usersEvents).push(this.connectionEventUser);
   }
   public ngOnInit(): void {
+    console.log('Here');
+    
   }
 
 }

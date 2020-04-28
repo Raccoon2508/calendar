@@ -22,9 +22,8 @@ export class SingleEventComponent implements OnInit {
   }
 
   public deleteEvent(): void {
-    this.eventsServise.deleteEvent(this.singleEvent);
+    this.eventsServise.deleteEvent(this.singleEvent.id);
     this.emmited.emit();
-    console.log(this.emmited);
   }
 
   ngOnInit() {

@@ -32,3 +32,8 @@ export interface EventUser {
   userID: number;
   eventID: number;
 }
+
+export interface User {
+  userName: string;
+  userId: number;
+}

@@ -1,4 +1,13 @@
-.events-list{
-  border: 1px solid red;
-
+.event-table-header {
+  border: 1px solid #616161;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
+
+.single-event {
+  margin-top: 5px;
+}
+/*# sourceMappingURL=events-list.component.css.map */

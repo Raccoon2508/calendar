@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { UrlObjectCommon } from 'url';
 import { DayState } from '../../services/dayState.service';
 import { EventsDB } from '../../day-shedule/services/events.service';
+import { MyEvent, EventBase, EventUser, User } from '../../day-shedule/models/event';
 
 @Component({
   selector: 'app-day',
@@ -14,7 +15,7 @@ export class DayComponent implements OnInit {
   @Input() private currentMonthNumber: number;
   @Input() private currentYear: number;
   private dayId: string;
-  public eventsStatusArray: string[];
+  public eventsStatusArray;
 
   constructor(private router: Router, public dayState: DayState, private eventsStatus: EventsDB) {}
 
@@ -28,8 +29,14 @@ export class DayComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.eventsStatusArray =
-         this.eventsStatus.eventsDayStatus(this.dayNumber, this.currentMonthNumber, this.currentYear);
+  this.eventsStatus.getBase().subscribe((item: MyEvent[]) => {
+      this.eventsStatusArray = item.filter((currentEvent) =>
+            currentEvent.userId === 1
+            && currentEvent.day === this.dayNumber
+            && currentEvent.month === this.currentMonthNumber
+            && currentEvent.year === this.currentYear);
+
+    });
   }
 
   public ngOnChanges(): void {

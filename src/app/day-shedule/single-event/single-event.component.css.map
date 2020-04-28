@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,aAAa,CAAA;EACT,OAAO,EAAC,IAAI;EACZ,eAAe,EAAE,YAAY;EAC7B,MAAM,EAAE,iBAAiB;CAC1B;;AAED,AAAA,KAAK,CAAC;EACJ,gBAAgB,EAAE,OAAO;CAC1B;;AAED,AAAA,OAAO,CAAC;EACN,gBAAgB,EAAE,OAAO;CAC1B;;AAED,AAAA,IAAI,CAAC;EACH,gBAAgB,EAAE,OAAO;CAC1B",
+    "sources": [
+        "single-event.component.scss"
+    ],
+    "names": [],
+    "file": "single-event.component.css"
+}

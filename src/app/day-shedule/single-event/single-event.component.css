@@ -1,5 +1,21 @@
-.single-event{
-  display:flex;
-  justify-content: space-around;
-  border: 1px solid green;
+.single-event {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  border: 1px solid #616161;
 }
+
+.high {
+  background-color: #ffb6b9;
+}
+
+.normal {
+  background-color: #FFF5C3;
+}
+
+.low {
+  background-color: #D3E397;
+}
+/*# sourceMappingURL=single-event.component.css.map */

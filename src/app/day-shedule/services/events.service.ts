@@ -1,12 +1,27 @@
-import { MyEvent, EventBase } from '../models/event';
+import { MyEvent, EventBase, EventUser, User } from '../models/event';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, throwError, of, from } from 'rxjs';
+import { map, filter } from 'rxjs/operators';
+import { catchError, retry } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root',
 })
 
 export class EventsDB {
-      public eventsBase: EventBase = {
+  private loadedEvents: MyEvent[];
+  private eventUser: EventUser[];
+  private user: User;
+  private baseUrl: string = 'http://localhost:3000/';
+  private urls: {[key: string]: string} = {
+    baseUrl: 'http://localhost:3000/',
+    eventUserUrl: 'http://localhost:3000/usersEvents',
+    eventsUrl: 'http://localhost:3000/events'
+  };
+
+  public eventsBase: EventBase = {
        'users': [
         {name: 'Nikita', id: 1}
       ],
@@ -27,31 +42,7 @@ export class EventsDB {
         year: 2020}]
     };
 
-constructor() {}
-
- public saveEvent(savedEvent: MyEvent): void {
-  this.eventsBase.events = this.eventsBase.events.map((item) => {
-    if (item.id === savedEvent.id) {
-      item = savedEvent;
-    }
-    console.log(item);
-    return item;
-  });
- }
- public deleteEvent(deletedEvent: MyEvent): void {
-  this.eventsBase.events = this.eventsBase.events.filter((item) => item.id !== deletedEvent.id);
- console.log(this.eventsBase.events);
-}
-
-public loadEvents(day: number, month: number, year: number, userId?: number): MyEvent[]  {
-  let result: MyEvent[] = this.eventsBase.events.filter((item) => {
-    if (item.day === day && item.month === month && item.year === year) {
-      return item;
-    }
-  });
-  console.log(result);
-  return result;
-}
+constructor( public http: HttpClient ) {}
 
 public eventsDayStatus(day: number, month: number, year: number, id?: number): string[] {
   let result: string[] = [];
@@ -63,4 +54,21 @@ public eventsDayStatus(day: number, month: number, year: number, id?: number): s
   console.log(result);
   return result;
 }
+
+public getBase(day?: number, month?: number, year?: number, userId?: number) {
+  return this.http.get(this.urls.eventsUrl);
+}
+
+public postEvent(postedEvent: MyEvent): void {
+  this.http.post(this.urls.eventsUrl, postedEvent).subscribe();
+}
+
+public deleteEvent(eventId: number): void {
+  this.http.delete(`${this.urls.eventsUrl}/${eventId}`).subscribe();
+}
+
+public editingEvent(eventId: number, editedEvent: MyEvent): void {
+  this.http.put(`${this.urls.eventsUrl}/${eventId}`, editedEvent).subscribe();
+}
+
 }

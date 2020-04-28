@@ -46,10 +46,7 @@ constructor(
     savedEvent.month = this.month;
     savedEvent.year = this.year;
     savedEvent.userId = this.userId;
-    console.log(savedEvent);
-    
-    this.eventsDb.saveEvent(savedEvent);
-    console.log(this.eventsDb.eventsBase);
+    this.eventsDb.editingEvent(this.eventId, savedEvent);
   }
 
   public ngOnInit(): void {

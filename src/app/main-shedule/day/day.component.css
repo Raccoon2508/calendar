@@ -32,4 +32,14 @@
           justify-content: flex-start;
   margin: 0px 2px;
 }
+
+.day .events-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.day .event-symbol {
+  font-size: 25px;
+}
 /*# sourceMappingURL=day.component.css.map */

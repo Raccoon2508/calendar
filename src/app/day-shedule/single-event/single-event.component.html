@@ -1,5 +1,10 @@
-<div class = "single-event">
-  <p class="tiimeFrom">
+<div class = "single-event"
+[class.high]="singleEvent.priority==='high'"
+[class.normal]="singleEvent.priority==='normal'"
+[class.low]="singleEvent.priority==='low'"
+>
+
+  <p class="timeFrom">
   {{singleEvent.timeFrom}}
   </p>
   <p class = "timeTo">
@@ -8,10 +13,7 @@
   <p class = "title">
   {{singleEvent.title}}
   </p>  
-  <p class = "priority" color>
-  {{singleEvent.priority}}
-  </p>
-
+  
   <button (click) = "deleteEvent()">Delete</button>
   <button (click)="editEventFunc()">Edit</button>
 </div>  

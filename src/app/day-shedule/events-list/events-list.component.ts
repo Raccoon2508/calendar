@@ -15,14 +15,19 @@ export class EventsListComponent implements OnInit {
   @Input() emmited;
   public sheduleYear: number = this.dayState.year;
   public sheduleMonth: number = this.dayState.month;
-  public sheduleDay: number = this.dayState.day;;
-
+  public sheduleDay: number = this.dayState.day;
   public eventsDataBase: MyEvent[];
   constructor(public eventsDb: EventsDB, public dayState: DayState) { }
 
   public ngOnInit(): void {
-    console.log(this.sheduleDay, this.sheduleMonth, this.sheduleYear);
-    this.eventsDataBase = this.eventsDb.loadEvents(this.sheduleDay, this.sheduleMonth, this.sheduleYear);
+    this.eventsDb.getBase().subscribe((item: MyEvent[]) => {
+      this.eventsDataBase = item.filter((currentEvent) =>
+            currentEvent.userId === 1
+            && currentEvent.day === this.sheduleDay
+            && currentEvent.month === this.sheduleMonth
+            && currentEvent.year === this.sheduleYear);
+
+    });
   }
 
 }
