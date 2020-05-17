@@ -5,6 +5,13 @@
   -ms-flex-pack: distribute;
       justify-content: space-around;
   border: 1px solid #616161;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.single-event button {
+  width: 80px;
 }
 
 .high {

@@ -17,6 +17,7 @@ import { DaySheduleComponent } from './day-shedule/day-shedule.component';
 import { EventsDB } from './day-shedule/services/events.service';
 import { EventsListComponent  } from './day-shedule//events-list/events-list.component';
 import { AddEventFormComponent } from './day-shedule/add-event-form/add-event-form.component';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AddEventFormComponent } from './day-shedule/add-event-form/add-event-fo
     HttpClientModule,
     ReactiveFormsModule,
     MainSheduleModule,
-    DaySheduleModule
+    DaySheduleModule,
+    LoginModule
   ],
   exports: [RouterModule],
   providers: [HttpClientModule, EventsDB],

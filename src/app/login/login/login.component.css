@@ -1,0 +1,56 @@
+.user-login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 400px;
+  position: relative;
+  background-color: #bbded6;
+  font-family: 'Roboto', Arial, sans-serif;
+  color: #616161;
+  -webkit-box-shadow: 2px 2px 2px 2px #616161;
+          box-shadow: 2px 2px 2px 2px #616161;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px;
+}
+
+.user-login h2 {
+  margin-top: 0px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.user-login label {
+  width: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 10px;
+}
+
+.user-login label input {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.user-login .button-block {
+  margin-top: 30px;
+}
+
+.user-login .button-block button {
+  margin: 10px;
+}
+/*# sourceMappingURL=login.component.css.map */

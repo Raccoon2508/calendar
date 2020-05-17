@@ -7,7 +7,7 @@ import { EditFormComponent } from './edit-event-form/edit-event-form.component';
 const routes: Routes = [
     { path: '', component: DaySheduleListComponent},
     { path: 'newEvent', component: AddEventFormComponent},
-    { path: ':id', component: EditFormComponent},
+    { path: 'kkj', component: EditFormComponent, pathMatch: 'full'},
 ];
 @NgModule({
     imports: [RouterModule.forChild(routes)],
