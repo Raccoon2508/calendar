@@ -1,6 +1,6 @@
 import { MyEvent, EventBase, EventUser, User } from '../models/event';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError, of, from } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 import { catchError, retry } from 'rxjs/operators';
@@ -44,23 +44,12 @@ export class EventsDB {
 
 constructor( public http: HttpClient ) {}
 
-public eventsDayStatus(day: number, month: number, year: number, id?: number): string[] {
-  let result: string[] = [];
-  this.eventsBase.events.forEach((item) => {
-    if (item.day === day && item.month === month && item.year === year) {
-      result.push(item.priority);
-    }
-  });
-  console.log(result);
-  return result;
-}
-
 public getBase(day?: number, month?: number, year?: number, userId?: number) {
   return this.http.get(this.urls.eventsUrl);
 }
 
 public postEvent(postedEvent: MyEvent): void {
-  this.http.post(this.urls.eventsUrl, postedEvent).subscribe();
+  this.http.post(this.urls.baseUrl + '/add', postedEvent).subscribe();
 }
 
 public deleteEvent(eventId: number): void {
@@ -68,7 +57,11 @@ public deleteEvent(eventId: number): void {
 }
 
 public editingEvent(eventId: number, editedEvent: MyEvent): void {
-  this.http.put(`${this.urls.eventsUrl}/${eventId}`, editedEvent).subscribe();
+  this.http.post(this.urls.baseUrl + '/edit', editedEvent).subscribe();
 }
 
+public loadEvents(): any {
+    const headersAuth = new HttpHeaders({'authorization': localStorage.getItem('calendarUserJwt')});
+    return this.http.get(this.urls.baseUrl, { headers: headersAuth, responseType: 'json'});
+}
 }

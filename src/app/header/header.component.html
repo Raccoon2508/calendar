@@ -1,11 +1,16 @@
 <div class = "header" >
     <div class = "infoblock">
-     
+    <div class = "infoblock__name-title">
+        <p *ngIf = "currentUserName !== null; else elseBlock" class = "name-title__title"> Hello, {{currentUserName}}</p>
+        <ng-template #elseBlock class = "name-title__title">Please login, guest</ng-template>
+    </div>         
       
     <p class = "date">
         {{currentDate | date: 'longDate'}}
         {{swissTime | date: 'hh:mm:ss'}}
     </p>
+
+    <button (click)="logout()" >Logout</button>
   
     
     </div>

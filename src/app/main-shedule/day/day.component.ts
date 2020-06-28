@@ -15,7 +15,7 @@ export class DayComponent implements OnInit {
   @Input() private currentMonthNumber: number;
   @Input() private currentYear: number;
   private dayId: string;
-  public eventsStatusArray;
+  public eventsStatusArray = [];
 
   constructor(private router: Router, public dayState: DayState, private eventsStatus: EventsDB) {}
 
@@ -28,20 +28,15 @@ export class DayComponent implements OnInit {
     this.router.navigate(['day', this.currentYear, this.currentMonthNumber, this.dayNumber, 'table']);
   }
 
-  public ngOnInit(): void {
-  this.eventsStatus.getBase().subscribe((item: MyEvent[]) => {
-      this.eventsStatusArray = item.filter((currentEvent) =>
-            currentEvent.userId === 1
-            && currentEvent.day === this.dayNumber
-            && currentEvent.month === this.currentMonthNumber
-            && currentEvent.year === this.currentYear);
-
+  public ngOnInit() {
+    this.eventsStatus.loadEvents().subscribe((item) => {
+      this.eventsStatusArray = item.filter((x) =>{
+        return (+x.day === +this.dayNumber&&
+        +x.month === +this.currentMonthNumber&&
+        +x.year === +this.currentYear)
+      }
+      )
     });
-  }
-
-  public ngOnChanges(): void {
-    this.eventsStatusArray =
-    this.eventsStatus.eventsDayStatus(this.dayNumber, this.currentMonthNumber, this.currentYear);
-  }
+}
 
 }

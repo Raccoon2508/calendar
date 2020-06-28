@@ -4,7 +4,7 @@
     box-sizing: border-box;
   }
 
-  p{
+  p, .name-title__title {
     font-size: 2em;
     padding:0px;
     line-height:0.9;
@@ -24,6 +24,7 @@
       transform: translate(0, -50%);
       right:2%;
       text-align: right;
+      
     }
     
   }
@@ -59,7 +60,7 @@
   
   button{
     margin-left:15px;
-    padding:5px;
+    padding: 8px 16px;
   }
   
   .username{

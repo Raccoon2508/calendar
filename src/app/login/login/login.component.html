@@ -1,4 +1,10 @@
 <div class = "user-login">
+
+    <div class = 'errorMessage' 
+        [class.show] = "errorMessage === true">
+    <h2 class='error-message__title'>Uncorrect Login or Password</h2>
+  </div>  
+
     <h2>Please, login!</h2>
     <label>Email:<input type="email" placeholder="please, write your email" [(ngModel)]="email"></label>
     <label>Password:<input type="password" [(ngModel)]="pass"></label>
@@ -6,4 +12,22 @@
     <button (click) = "login()">Login</button>
     <button>Registration</button>
     </div>
+    <div>
+      <p whitespase = 'pre'>
+          "name": "Nikita",
+          "id": 1,
+          "email": "asdf@mail.com",
+          "pass": "1234"
+      </p>
+    </div>  
+    
+    <div>
+      <p whitespase = 'pre'>
+    "name": "Andrey",
+          "id": 1,
+          "email": "1111@mail.com",
+          "pass": "1234"
+    
+    </div> 
 </div>   
+

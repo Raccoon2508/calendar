@@ -23,10 +23,9 @@ export class AddEventFormComponent implements OnInit {
   private sheduleYear: number = 2020;
   private sheduleMonth: number = 2;
   private sheduleDay: number = 14;
-  private userId: number = 1;
   private eventObj: MyEvent = {
     id: 0,
-    userId: 1,
+    userId: +localStorage.getItem('calendarUserId'),
     year: 0,
     month: 0,
     day: 0,
@@ -63,17 +62,12 @@ export class AddEventFormComponent implements OnInit {
     this.eventObj.priority = this.priority;
 
     this.connectionEventUser.eventID = +this.eventObj.id;
-    this.connectionEventUser.userID = +this.userId;
-    
-
+    this.connectionEventUser.userID = +localStorage.getItem('calendarUserId');
     this.addedMessage = true;
     setTimeout(() => this.addedMessage = false, 2000);
     this.eventsDataBase.postEvent(this.eventObj);
     (this.eventsDataBase.eventsBase.usersEvents).push(this.connectionEventUser);
   }
   public ngOnInit(): void {
-    console.log('Here');
-    
   }
-
 }

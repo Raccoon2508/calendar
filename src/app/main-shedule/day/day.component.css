@@ -40,6 +40,8 @@
 }
 
 .day .event-symbol {
+  font-weight: bold;
+  line-height: 0.6;
   font-size: 25px;
 }
 /*# sourceMappingURL=day.component.css.map */

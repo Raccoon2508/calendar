@@ -9,6 +9,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  border: 1px solid transparent;
   max-width: 400px;
   position: relative;
   background-color: #bbded6;
@@ -18,11 +19,11 @@
           box-shadow: 2px 2px 2px 2px #616161;
   margin-left: auto;
   margin-right: auto;
-  padding: 30px;
+  padding: 0;
 }
 
 .user-login h2 {
-  margin-top: 0px;
+  margin-top: 30px;
   font-size: 25px;
   font-weight: bold;
 }
@@ -47,10 +48,77 @@
 }
 
 .user-login .button-block {
-  margin-top: 30px;
+  margin: 30px;
 }
 
 .user-login .button-block button {
   margin: 10px;
+}
+
+.user-login .errorMessage {
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 165, 169, 0.7);
+}
+
+.user-login .errorMessage .error-message__title {
+  top: 50%;
+  left: 50%;
+}
+
+.user-login .show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-animation-duration: 1s, 1s;
+          animation-duration: 1s, 1s;
+  -webkit-animation-name: fadeIn, fadeOut;
+          animation-name: fadeIn, fadeOut;
+  -webkit-animation-delay: 0s, 1s;
+          animation-delay: 0s, 1s;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 /*# sourceMappingURL=login.component.css.map */

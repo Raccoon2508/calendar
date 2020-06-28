@@ -26,10 +26,7 @@ export class DaySheduleComponent {
   )
 
   addRouting(){
-    console.log('MustAdd');
     this.router.navigate(['newEvent']);
-    
-    
   }
 
   goBack(){

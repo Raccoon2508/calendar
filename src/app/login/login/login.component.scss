@@ -1,7 +1,8 @@
 .user-login{
     display: flex;
-     flex-direction: column;
+    flex-direction: column;
     align-items: center;
+    border: 1px solid transparent;
     max-width:400px;
     position:relative;
     background-color: #bbded6;
@@ -10,9 +11,9 @@
     box-shadow: 2px 2px 2px 2px #616161;
     margin-left: auto;
     margin-right: auto;
-    padding: 30px;
+    padding: 0;
     h2{
-        margin-top:0px;
+        margin-top:30px;
         font-size: 25px;
         font-weight: bold;
     }
@@ -30,10 +31,54 @@
         }
     }
     .button-block{
-        margin-top:30px;
+        margin:30px;
         button{
             margin:10px;
         }
         
     }
+
+    .errorMessage{
+        display:none;
+        justify-content: center;
+        align-items: center;
+        position:absolute;
+        height:100%;
+        width:100%;
+        background-color: rgba(#ffa5a9,0.7);
+        .error-message__title{
+            top:50%;
+            left: 50%;
+          }
+
+          
+          
+      }
+
+      .show{
+        display:flex;
+        animation-duration: 1s, 1s;
+        animation-name: fadeIn, fadeOut;
+        animation-delay: 0s, 1s;
+      }
+      
+      
+      @keyframes fadeIn{
+       0%{
+         opacity: 0;
+       }
+       100%{
+         opacity: 1;
+       }
+      }
+      
+      @keyframes fadeOut{
+       0%{
+         opacity: 1;
+       }
+       100%{
+         opacity: 0;
+       }
+      }  
+
 }
