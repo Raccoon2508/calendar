@@ -22,13 +22,23 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        
+        position: relative;
         margin-top: 10px;
 
         input{
             
             margin-top:auto;
             margin-bottom: auto;
+        }
+        .show-pass{
+            background-image: url('/assets/eye.png');
+            background-size: 20px;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: absolute;
+            right: 0px;
+            width:30px;
+            height:30px;
         }
     }
     .button-block{
@@ -37,5 +47,21 @@
             margin:10px;
         }
         
+        
     }
+
+    :invalid, .uncorrect{
+        background-color: #ffa5a9;
+        animation-duration: 0.5s;
+        animation-name: fade;
+      }
+      
+      @keyframes fade{
+        from{
+          background-color: white;
+        }
+        to{
+          background-color: #ffa5a9;
+        }
+      }
 }

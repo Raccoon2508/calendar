@@ -1,10 +1,42 @@
-<div class = "user-create">
+<div class = "user-create" autocomplete="off"> 
     <h2>Please, create new user!</h2>
-    <label>Email:<input type="email" placeholder="please, write your email"></label>
-    <label>Password:<input type="password"></label>
-    <label>Repeat password:<input type="password"></label>
+    <label>Name:<input type="text"
+        [(ngModel)] = "userName" 
+        placeholder="please, insert your name"
+        #nameInput = "ngModel"
+        [class.uncorrect] = "!correctName"
+        required>
+    </label>
+
+    <label>Email:<input type="email"
+        [(ngModel)] = "email" 
+        placeholder="please, write your email"
+        #emailInput = "ngModel"
+        [class.uncorrect] = "!correctEmail"
+       
+        required>
+    </label>
+    <label>Password:<input 
+        [attr.type]="passTextType"
+        [(ngModel)]="firstPass"
+        #firstPassInput
+        [class.uncorrect] = "!correctRepeatedPass"
+        placeholder="write you password">
+        <button class ='show-pass' (click)='showPass()'></button></label>
+    <label>Repeat password:<input 
+        [attr.type]="passTextType"
+        [(ngModel)]="secondPass"
+        #secondPassInput
+        [class.uncorrect] = "!correctRepeatedPass"
+        placeholder="correctly repeat password"
+        >
+        
+    </label>
     <div class="button-block">
-        <button>Create</button>
-        <button>Back</button>
+        
+        <button (click) = "createUser()"
+        [disabled]="!correctRepeatedPass||!correctEmail||!correctName">Create</button>
+        <button (click) = "goBack()">Back</button>
+
     </div>    
 </div>

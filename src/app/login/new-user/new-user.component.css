@@ -38,6 +38,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
   margin-top: 10px;
 }
 
@@ -46,11 +47,48 @@
   margin-bottom: auto;
 }
 
+.user-create label .show-pass {
+  background-image: url("/assets/eye.png");
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  right: 0px;
+  width: 30px;
+  height: 30px;
+}
+
 .user-create .button-block {
   margin-top: 30px;
 }
 
 .user-create .button-block button {
   margin: 10px;
+}
+
+.user-create :invalid, .user-create .uncorrect {
+  background-color: #ffa5a9;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-name: fade;
+          animation-name: fade;
+}
+
+@-webkit-keyframes fade {
+  from {
+    background-color: white;
+  }
+  to {
+    background-color: #ffa5a9;
+  }
+}
+
+@keyframes fade {
+  from {
+    background-color: white;
+  }
+  to {
+    background-color: #ffa5a9;
+  }
 }
 /*# sourceMappingURL=new-user.component.css.map */
