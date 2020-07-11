@@ -12,22 +12,14 @@
     <button (click) = "login()">Login</button>
     <button (click) = "registerNewUser()" >Registration</button>
     </div>
-    <div>
-      <p whitespase = 'pre'>
-          "name": "Nikita",
-          "id": 1,
-          "email": "asdf@mail.com",
-          "pass": "1234"
-      </p>
-    </div>  
     
-    <div>
-      <p whitespase = 'pre'>
-    "name": "Andrey",
-          "id": 1,
-          "email": "1111@mail.com",
-          "pass": "1234"
-    
-    </div> 
+    <div class = "registered-users">
+      <h2>Registerated users for testing:</h2>
+      <p *ngIf="!registratedUsers">List unavailable or empty</p>
+      <ul class="users-list">
+        <li class="single-user" *ngFor="let item of registratedUsers">User: {{item.email}} Pass: {{item.pass}}</li>
+      </ul>
+    </div>
+
 </div>   
 

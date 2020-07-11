@@ -19,6 +19,7 @@ export class AddEventFormComponent implements OnInit {
   private priority: string;
   private id: string;
   private addedMessage: boolean = false;
+  private eventedUsers: string[];
 
   private sheduleYear: number = 2020;
   private sheduleMonth: number = 2;
@@ -68,6 +69,12 @@ export class AddEventFormComponent implements OnInit {
     this.eventsDataBase.postEvent(this.eventObj);
     (this.eventsDataBase.eventsBase.usersEvents).push(this.connectionEventUser);
   }
+
+  private inventedUsers(){
+    this.eventsDataBase.loadUsersEventsBase();
+
+  }
   public ngOnInit(): void {
+    this.inventedUsers();
   }
 }

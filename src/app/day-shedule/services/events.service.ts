@@ -1,9 +1,10 @@
 import { MyEvent, EventBase, EventUser, User } from '../models/event';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError, of, from } from 'rxjs';
+import { Observable, throwError, of, from, concat, zip } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 import { catchError, retry } from 'rxjs/operators';
+import { nextTick } from 'process';
 
 
 @Injectable({
@@ -64,4 +65,17 @@ public loadEvents(): any {
     const headersAuth = new HttpHeaders({'authorization': localStorage.getItem('calendarUserJwt')});
     return this.http.get(this.urls.baseUrl, { headers: headersAuth, responseType: 'json'});
 }
+
+public loadUsersBase(): any{
+  return this.http.get(this.urls.baseUrl + '/users-base');
+}
+
+public loadUsersEventsBase(eventId): any{
+  const users = this.http.get(this.urls.baseUrl + '/users-base');
+  const usersEvents = this.http.get(this.urls.baseUrl + '/users-events-base');
+  return zip(users, usersEvents);
+}
+
+
+
 }

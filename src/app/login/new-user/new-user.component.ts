@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { first } from 'rxjs/operators';
 import {Location} from '@angular/common';
-import { user } from '../../services/user';
 import { LoginService } from '../services/login.service';
 
 @Component({

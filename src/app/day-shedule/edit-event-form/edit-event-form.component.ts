@@ -22,6 +22,7 @@ export class EditFormComponent implements OnInit {
   private month: number;
   private year: number;
   private userId: number;
+  private invitedUsers: {[x: string]: string|number}[];
 
 constructor(
     private router: Router,
@@ -33,7 +34,7 @@ constructor(
     this.location.back();
   }
 
-  public saveEvent(): void {
+  private saveEvent(): void {
     let savedEvent = new MyEvent();
     
     savedEvent.id = this.eventId;
@@ -49,6 +50,23 @@ constructor(
     this.eventsDb.editingEvent(this.eventId, savedEvent);
   }
 
+  private inventedUsers(eventId){
+  this.eventsDb.loadUsersEventsBase(eventId).subscribe(
+    data => {
+      let [users, usersEvents] = data;
+      this.invitedUsers = inventedUsers(eventId, users, usersEvents);
+    }
+  );
+
+  function inventedUsers(id, users, usersEvents){
+    let usersIds = usersEvents.map(item => {
+      if (item.eventID === id) { return item.userID; }
+    });
+    console.log(users.filter(user => usersIds.includes(user.id)));
+    return users.filter(user => usersIds.includes(user.id));
+    }
+  }
+
   public ngOnInit(): void {
     this.editedEvent = history.state;
     this.eventId = this.editedEvent.id;
@@ -61,5 +79,6 @@ constructor(
     this.month = this.editedEvent.month;
     this.year = this.editedEvent.year;
     this.userId = this.editedEvent.userId;
+    this.inventedUsers(this.eventId);
   }
 }
