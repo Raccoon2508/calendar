@@ -56,7 +56,7 @@ input.title, textarea{
   }
 }
 
-button{
+.submit, .back{
   margin:20px;
 }
 

@@ -49,6 +49,13 @@ public getBase(day?: number, month?: number, year?: number, userId?: number) {
   return this.http.get(this.urls.eventsUrl);
 }
 
+public sendInvitedUsers(usersArr, eventId){
+  let arrUserEvent = usersArr.map((user) => {
+    return {'userID': user.id, 'eventID': eventId}
+  })
+  this.http.post(this.urls.baseUrl + '/invite-users', arrUserEvent).subscribe();
+}
+
 public postEvent(postedEvent: MyEvent): void {
   this.http.post(this.urls.baseUrl + '/add', postedEvent).subscribe();
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MyEvent, EventUser, EventBase } from '../models/event';
 import { EventsDB } from '../services/events.service';
 import { Router } from '@angular/router';
@@ -20,10 +20,11 @@ export class AddEventFormComponent implements OnInit {
   private id: string;
   private addedMessage: boolean = false;
   private eventedUsers: string[];
-
+  private registratedUsers: {[x: string]: string|number}[];
   private sheduleYear: number = 2020;
   private sheduleMonth: number = 2;
   private sheduleDay: number = 14;
+  private iventedUsers: Set<{[x: string]: string|number}> = new Set();
   private eventObj: MyEvent = {
     id: 0,
     userId: +localStorage.getItem('calendarUserId'),
@@ -45,7 +46,8 @@ export class AddEventFormComponent implements OnInit {
   constructor(private eventsDataBase: EventsDB,
               private router: Router,
               private location: Location,
-              private dayState: DayState) {}
+              private dayState: DayState,
+              private cdr: ChangeDetectorRef) {}
 
   private goBack(): void {
     this.location.back();
@@ -65,16 +67,28 @@ export class AddEventFormComponent implements OnInit {
     this.connectionEventUser.eventID = +this.eventObj.id;
     this.connectionEventUser.userID = +localStorage.getItem('calendarUserId');
     this.addedMessage = true;
+    
     setTimeout(() => this.addedMessage = false, 2000);
     this.eventsDataBase.postEvent(this.eventObj);
     (this.eventsDataBase.eventsBase.usersEvents).push(this.connectionEventUser);
+    this.eventsDataBase.sendInvitedUsers(Array.from(this.iventedUsers), this.eventObj.id);
   }
 
-  private inventedUsers(){
-    this.eventsDataBase.loadUsersEventsBase();
+ private preAdd(i) {
+    (this.iventedUsers).add(this.registratedUsers[i]);
+    console.log(this.iventedUsers);
 
   }
+
+  private preDeleteUser(item) {
+    console.log(this.iventedUsers.keys());
+    (this.iventedUsers).delete(item);
+  }
+
   public ngOnInit(): void {
-    this.inventedUsers();
+     this.eventsDataBase.loadUsersBase().subscribe((data) => {
+      this.registratedUsers = data;
+      this.cdr.detectChanges();
+    });
   }
 }
