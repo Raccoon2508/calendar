@@ -1,0 +1,16 @@
+<div class = "main-events-list__block" >
+
+    <div class = "event-table-header">
+        <p class="time-from-title">Time From</p>
+        <p class= "time-to-title">Time To</p>
+        <p class= "time-to-title">Title</p>
+        <p class= "delete-button"></p>
+        <p class= "edit-button"></p>
+    </div>
+       
+    <div class = "single-event" *ngFor = "let item of eventsLoadedBase" >
+    <app-single-event [singleEvent] = 'item' (emmited) = "ngOnInit()"></app-single-event>
+    </div>
+    
+</div>
+    

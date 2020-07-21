@@ -18,6 +18,8 @@ import { EventsDB } from './day-shedule/services/events.service';
 import { EventsListComponent  } from './day-shedule//events-list/events-list.component';
 import { AddEventFormComponent } from './day-shedule/add-event-form/add-event-form.component';
 import { LoginModule } from './login/login.module';
+import { EventsMainListComponent } from './events-main-list/events-main-list.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { LoginModule } from './login/login.module';
     HeaderComponent,
     FooterComponent,
     NewUserComponent,
-    MainSheduleComponent
+    MainSheduleComponent,
+    EventsMainListComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +38,7 @@ import { LoginModule } from './login/login.module';
     MainSheduleModule,
     DaySheduleModule,
     LoginModule
+    
   ],
   exports: [RouterModule],
   providers: [HttpClientModule, EventsDB],

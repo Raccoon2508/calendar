@@ -20,6 +20,6 @@ import { DaySheduleListComponent } from './day-shedule-list/day-shedule-list.com
     , SingleEventComponent, DaySheduleComponent, PriorityColorDirective, ColorDirective,
     AddEventFormComponent,
     DaySheduleListComponent],
-  exports: [DaySheduleComponent, EventsListComponent]
+  exports: [DaySheduleComponent, EventsListComponent, SingleEventComponent]
 })
 export class DaySheduleModule { }
