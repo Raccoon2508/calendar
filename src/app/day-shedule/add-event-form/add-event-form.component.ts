@@ -4,6 +4,7 @@ import { EventsDB } from '../services/events.service';
 import { Router } from '@angular/router';
 import {Location} from '@angular/common';
 import { DayState } from '../../services/dayState.service';
+import { NullTemplateVisitor } from '@angular/compiler';
 
 @Component({
   selector: 'app-add-event-form',
@@ -24,6 +25,7 @@ export class AddEventFormComponent implements OnInit {
   private sheduleYear: number = 2020;
   private sheduleMonth: number = 2;
   private sheduleDay: number = 14;
+  private userID: number = +localStorage.getItem('calendarUserId');
   private iventedUsers: Set<{[x: string]: string|number}> = new Set();
   private eventObj: MyEvent = {
     id: 0,
@@ -67,17 +69,15 @@ export class AddEventFormComponent implements OnInit {
     this.connectionEventUser.eventID = +this.eventObj.id;
     this.connectionEventUser.userID = +localStorage.getItem('calendarUserId');
     this.addedMessage = true;
-    
+    let eventAndInvitedInfo: object = {eventInfo: this.eventObj, invitedInfo: Array.from(this.iventedUsers)};
     setTimeout(() => this.addedMessage = false, 2000);
-    this.eventsDataBase.postEvent(this.eventObj);
+    this.eventsDataBase.postEvent(eventAndInvitedInfo);
     (this.eventsDataBase.eventsBase.usersEvents).push(this.connectionEventUser);
-    this.eventsDataBase.sendInvitedUsers(Array.from(this.iventedUsers), this.eventObj.id);
+    
   }
 
  private preAdd(i) {
-    (this.iventedUsers).add(this.registratedUsers[i]);
-    console.log(this.iventedUsers);
-
+    if (i !== this.userID) {(this.iventedUsers).add(this.registratedUsers[i]); }
   }
 
   private preDeleteUser(item) {
@@ -87,7 +87,7 @@ export class AddEventFormComponent implements OnInit {
 
   public ngOnInit(): void {
      this.eventsDataBase.loadUsersBase().subscribe((data) => {
-      this.registratedUsers = data;
+      this.registratedUsers = data.filter(x => x.id !== this.userID);
       this.cdr.detectChanges();
     });
   }

@@ -52,7 +52,6 @@ export class LoginComponent implements OnInit {
 
     this.eventsDB.loadUsersBase().subscribe((data) => {
       this.registratedUsers = data;
-      console.log('userBase', this.registratedUsers);
       this.cdr.detectChanges();
     });
   }

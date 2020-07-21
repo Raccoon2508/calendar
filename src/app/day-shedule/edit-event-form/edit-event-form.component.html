@@ -48,9 +48,17 @@
     <div class="tooked-part-users-list">
       <h2>Invented users</h2>
       <ul class="percipitians-list">
-      <li style="list-style: none;" *ngFor = "let item of invitedUsers">{{item.name}} ({{item.email}})</li>
+      <li style="list-style: none;" *ngFor = "let item of invitedUsers">{{item.name}} ({{item.email}})<button class="delete-button" (click) = "preDeleteUser(item)">X</button></li>
       </ul>
     </div>
+
+    <form action="formdata" method="post" name="participants-list">
+      <h2>Select participants</h2>
+      <p>
+      <select name="list1" multiple>
+           <option *ngFor="let item of registratedUsers; index as i" (click) = "preAdd(i)">{{item.name}} ({{item.email}})</option>
+      </select></p>
+    </form>
     
     <h3>Priority</h3>
     <div class = "priority-radiobuttons">

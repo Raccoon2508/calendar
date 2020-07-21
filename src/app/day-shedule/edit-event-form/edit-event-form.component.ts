@@ -23,6 +23,8 @@ export class EditFormComponent implements OnInit {
   private year: number;
   private userId: number;
   private invitedUsers: {[x: string]: string|number}[];
+  private registratedUsers: {[x: string]: string|number}[];
+  private deletedUsers: {[x: string]: string|number}[] = [];
 
 constructor(
     private router: Router,
@@ -36,7 +38,6 @@ constructor(
 
   private saveEvent(): void {
     let savedEvent = new MyEvent();
-    
     savedEvent.id = this.eventId;
     savedEvent.timeFrom = this.timeFrom;
     savedEvent.timeTo = this.timeTo;
@@ -47,24 +48,39 @@ constructor(
     savedEvent.month = this.month;
     savedEvent.year = this.year;
     savedEvent.userId = this.userId;
-    this.eventsDb.editingEvent(this.eventId, savedEvent);
+    this.eventsDb.editingEvent(savedEvent, this.deletedUsers);
   }
 
   private inventedUsers(eventId){
-  this.eventsDb.loadUsersEventsBase(eventId).subscribe(
-    data => {
-      let [users, usersEvents] = data;
-      this.invitedUsers = inventedUsers(eventId, users, usersEvents);
-    }
-  );
-
   function inventedUsers(id, users, usersEvents){
     let usersIds = usersEvents.map(item => {
       if (item.eventID === id) { return item.userID; }
     });
     console.log(users.filter(user => usersIds.includes(user.id)));
     return users.filter(user => usersIds.includes(user.id));
+  }
+  this.eventsDb.loadUsersEventsBase(eventId).subscribe(
+    data => {
+      let [users, usersEvents] = data;
+      this.invitedUsers = inventedUsers(eventId, users, usersEvents)
+      .filter(x => x.id !== this.userId);
     }
+  );
+  }
+
+  private preAdd(i){
+    (this.invitedUsers).push(this.registratedUsers[i]);
+    let set = new Set(this.invitedUsers);
+    this.invitedUsers = Array.from(set);
+
+  }
+
+  private preDeleteUser(item) {
+    let set = new Set(this.invitedUsers);
+    set.delete(item);
+    this.deletedUsers.push(item);
+    this.invitedUsers = Array.from(set);
+    console.log('deleted', this.deletedUsers);
   }
 
   public ngOnInit(): void {
@@ -80,5 +96,8 @@ constructor(
     this.year = this.editedEvent.year;
     this.userId = this.editedEvent.userId;
     this.inventedUsers(this.eventId);
+    this.eventsDb.loadUsersBase().subscribe((data) => {
+      this.registratedUsers = data;
+    });
   }
 }

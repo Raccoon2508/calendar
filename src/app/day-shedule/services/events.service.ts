@@ -56,16 +56,21 @@ public sendInvitedUsers(usersArr, eventId){
   this.http.post(this.urls.baseUrl + '/invite-users', arrUserEvent).subscribe();
 }
 
-public postEvent(postedEvent: MyEvent): void {
+public postEvent(postedEvent): void {
   this.http.post(this.urls.baseUrl + '/add', postedEvent).subscribe();
 }
 
-public deleteEvent(eventId: number): void {
-  this.http.delete(`${this.urls.eventsUrl}/${eventId}`).subscribe();
+public deleteEvent(event: number, user: number): void {
+  this.http.post(this.urls.baseUrl + `/delete-event`, {eventID: event, userID: user}).subscribe();
 }
 
-public editingEvent(eventId: number, editedEvent: MyEvent): void {
-  this.http.post(this.urls.baseUrl + '/edit', editedEvent).subscribe();
+public editingEvent(editedEvent: MyEvent, deletedInvitedUsers): void {
+  let deletedUserEventsArr = deletedInvitedUsers
+  .map(item => {return {userID: item.id, eventID: editedEvent.id}; });
+
+  let editedEventInfo = {event: editedEvent, deletedUsers: deletedUserEventsArr};
+
+  this.http.post(this.urls.baseUrl + '/edit', editedEventInfo).subscribe();
 }
 
 public loadEvents(): any {
@@ -83,6 +88,13 @@ public loadUsersEventsBase(eventId): any{
   return zip(users, usersEvents);
 }
 
+public deleteParticipant(deletedUsers, eventId){
+  let deletedParticipantsForPost = deletedUsers.map((x)=>{
+    return {userID: x.id, eventID: eventId}
+  });
+  console.log(deletedParticipantsForPost);
+  this.http.post(this.urls.baseUrl + '/delete-participants', deletedParticipantsForPost).subscribe();
+}
 
 
 }

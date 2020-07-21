@@ -45,14 +45,14 @@
   </label>
 
   <div class="tooked-part-users-list">
-    <h2>Invented users</h2>
+    <h2>Invited users</h2>
     <ul class="invented-users-list">
       <li *ngFor = "let item of iventedUsers; index as i">{{item.name}} ({{item.email}})<button class="delete-button" (click) = "preDeleteUser(item)">X</button></li>
     </ul>
   </div>
 
   <form action="formdata" method="post" name="participants-list">
-    <h2>Select participants</h2>
+    <h2>Invite users by click on</h2>
     <p>
     <select name="list1" multiple>
          <option *ngFor="let item of registratedUsers; index as i" (click) = "preAdd(i)">{{item.name}} ({{item.email}})</option>

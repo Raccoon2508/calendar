@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventsDB } from '../services/events.service';
 import { MyEvent } from '../models/event';
@@ -14,7 +14,9 @@ export class SingleEventComponent implements OnInit {
   @Input() eventId;
   @Output() emmited: EventEmitter<any> = new EventEmitter();
 
-  constructor( private router: Router, private eventsServise: EventsDB) { }
+  constructor( private router: Router, 
+               private eventsServise: EventsDB,
+               private cdr: ChangeDetectorRef) { }
 
   public editEventFunc(): void {
     this.router.navigate([this.singleEvent.id], {state: this.singleEvent});
@@ -22,12 +24,11 @@ export class SingleEventComponent implements OnInit {
   }
 
   public deleteEvent(): void {
-    this.eventsServise.deleteEvent(this.singleEvent.id);
+    this.eventsServise.deleteEvent(this.singleEvent.id, +localStorage.getItem('calendarUserId'));
     this.emmited.emit();
   }
 
   ngOnInit() {
-    
   }
 
 }
