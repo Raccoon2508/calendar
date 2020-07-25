@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAAA,AAAA,mBAAmB,CAAA;EACf,MAAM,EAAE,iBAAiB;EACzB,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,YAAY;CAChC;;AAED,AAAA,aAAa,CAAA;EACT,UAAU,EAAE,GAAG;CAClB",
+    "mappings": "AAAA,AAAA,mBAAmB,CAAA;EACf,MAAM,EAAE,iBAAiB;EACzB,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,YAAY;CAKhC;;AARD,AAII,mBAJe,CAIf,MAAM,CAAA;EACF,KAAK,EAAE,GAAG;EACV,OAAO,EAAE,cAAc;CAC1B",
     "sources": [
         "events-list.component.scss"
     ],

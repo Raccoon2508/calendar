@@ -1,16 +1,35 @@
-<div class = "main-events-list__block" >
+<div class = "main-events-list" >
+    <div class="options-panel">
+        <button class="options-panel__calendar-button button" (click)="routingToCalendar()">To Calendar</button>
+        <button class="options-panel__priority-filter" (click)="priorityFilter('normal')">Priority Filter</button>
+        <button class="all-forth-buttons-block__all-forth-button button"
+        (click)="allOrForthList()"
+        #allOrForthSwitch>Forth</button>
+
+        <div class = "prority-filter-list">
+            <h3 class = "prority-filter-list__title">Priority</h3>    
+            <select class = "prority-filter-list__list"> 
+                <option class = "prority-filter-list__option">All</option>
+                <option class = "prority-filter-list__option">Low</option>
+                <option class = "prority-filter-list__option">Normal</option>
+                <option class = "prority-filter-list__option">High</option>
+            </select>
+        </div>
+    </div>
+
+   
 
     <div class = "event-table-header">
-        <p class="time-from-title">Time From</p>
-        <p class= "time-to-title">Time To</p>
-        <p class= "time-to-title">Title</p>
-        <p class= "delete-button"></p>
-        <p class= "edit-button"></p>
+        <p class="time-from-title title">Time From</p>
+        <p class= "time-to-title title">Time To</p>
+        <p class= "time-to-title title">Title</p>
+        <p class= "delete-edit-title title">Edit/Delete</p>
     </div>
        
-    <div class = "single-event" *ngFor = "let item of eventsLoadedBase" >
-    <app-single-event [singleEvent] = 'item' (emmited) = "ngOnInit()"></app-single-event>
+    <div class = "main-events-list__full-list" *ngFor = "let eventsGroups of eventsLoadedBase; index as i">
+       <h2 class = "main-events-list__subtitle">Events For: {{eventsGroups[1][0].day}}.{{eventsGroups[1][0].month}}.{{eventsGroups[1][0].year}}</h2>
+       <div *ngFor = "let item of eventsGroups[1]">
+        <app-single-event class = "single-event" [singleEvent] = 'item' (emmited) = "ngOnInit()"></app-single-event>
+       </div>
     </div>
-    
 </div>
-    

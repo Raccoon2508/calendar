@@ -2,8 +2,9 @@
     border: 1px solid #616161;
     display: flex;
     justify-content: space-around;
+    .title{
+        width: 25%;
+        outline: 1px solid blue;
+    }
 }
 
-.single-event{
-    margin-top: 5px;
-}

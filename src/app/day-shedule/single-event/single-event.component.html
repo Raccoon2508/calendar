@@ -4,16 +4,17 @@
 [class.low]="singleEvent.priority==='low'"
 >
 
-  <p class="timeFrom">
+  <p class="single-event__time-from-title title">
   {{singleEvent.timeFrom}}
   </p>
-  <p class = "timeTo">
+  <p class = "single-event__time-to-title title">
   {{singleEvent.timeTo}}
   </p>
-  <p class = "title">
+  <p class = "single-event__event-title-title title">
   {{singleEvent.title}}
   </p>  
-  
-  <button (click) = "deleteEvent()">Delete</button>
-  <button (click)="editEventFunc()">Edit</button>
+  <div class = "single-event-button-block">
+    <button (click) = "deleteEvent()" class = "single-event__delete-button button">Delete</button>
+    <button (click)="editEventFunc()" class = "single-event__edit-button button">Edit</button>
+  </div>  
 </div>  

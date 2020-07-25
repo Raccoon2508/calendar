@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { EventsDB } from '../services/events.service';
 import { MyEvent } from '../models/event';
 
-
 @Component({
   selector: 'app-single-event',
   templateUrl: './single-event.component.html',
@@ -19,7 +18,7 @@ export class SingleEventComponent implements OnInit {
                private cdr: ChangeDetectorRef) { }
 
   public editEventFunc(): void {
-    this.router.navigate([this.singleEvent.id], {state: this.singleEvent});
+    this.router.navigate(['edit/' + this.singleEvent.id], {state: this.singleEvent});
     console.log(this.singleEvent.id);
   }
 
