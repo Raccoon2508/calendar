@@ -4,12 +4,14 @@
     margin-right: auto;
     .options-panel{
         display: flex;
+        max-height: 50px;
         margin-left: auto;
         margin-right: auto;
     }
     .button {
-        margin: 0px 10px; 
-        outline: 1px solid red;  
+        margin: 0px 10px;
+        font-size: 20px;
+        height:50px; 
     }
     .event-table-header{
         border: 1px solid #616161;
@@ -23,10 +25,24 @@
             font-size: 20px;
         }
     }
-    .prority-filter-list{
+    .priority-filter-list{
         display: flex;
         max-width: 80px;
-        outline: 1px solid red;
+        .priority-filter-list__title{
+            margin-top: auto;
+            margin-bottom: auto;
+            
+        }
+        .priority-filter-list__list{
+            font-size: 15px;
+            font-weight: 400;
+            margin-left: 5px;
+        }
+        .priority-filter-list__option{
+            font-size: 15px;
+            font-weight: 400;
+
+        }
     }
 }
 

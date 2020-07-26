@@ -12,44 +12,55 @@
   font-size: 20px;
 }
 
-.buttons-panel button {
-  font-size: 20px;
-}
-
-.nav-block, .date-block {
+.buttons-panel .switcher-carousel {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 200px;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-}
-
-.selected {
-  color: red;
-}
-
-.switcher-coruasel {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   height: 50px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 10px 20px;
   border: 1px solid lightgrey;
 }
 
-.switcher-coruasel .year {
-  border: 1px solid transparent;
-  padding: 15px;
+.buttons-panel .switcher-carousel .switcher-carousel__label {
+  width: 80%;
 }
 
-.switcher-coruasel .month {
-  text-align: center;
-  width: 100px;
-  padding: 15px 0px;
+.buttons-panel .switcher-carousel .switcher-carousel__left-switcher, .buttons-panel .switcher-carousel .switcher-carousel__right-switcher {
+  width: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.current-month {
-  margin: 10px 22px;
+.buttons-panel .switcher-carousel .month-label, .buttons-panel .switcher-carousel .year-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.buttons-panel .year-switcher, .buttons-panel .month-switcher {
+  width: 130px;
+  margin: 5px 20px;
+}
+
+.buttons-panel .button {
+  margin-left: 50px;
+  height: 50px;
+  margin: 5px 20px;
+  font-size: 20px;
 }
 /*# sourceMappingURL=buttons.component.css.map */

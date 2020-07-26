@@ -1,16 +1,17 @@
 <div class="buttons-panel">
-    <div class="switcher-coruasel month">
-     <button class="switcher left" (click) = "leftMonthSwither()"><</button>
-     <div class="month">{{currentMonthName}}</div>
-     <button class="switcher right" (click) = "rightMonthSwither()">></button>
+ <div class="switcher-carousel month-switcher">
+     <button class="switcher-carousel__left-switcher" (click) = "leftMonthSwither()"><</button>
+     <div class="switcher-carousel__label month-label" >{{currentMonthName}}</div>
+     <button class="switcher-carousel__right-switcher" (click) = "rightMonthSwither()">></button>
  </div>
  
- <div class="switcher-coruasel year">
-     <button class="switcher left" (click) = "leftYearSwither()"><</button>
-     <div class="year">{{currentYear}}</div>
-     <button class="switcher right" (click) = "rightYearSwither()">></button>
+ <div class="switcher-carousel year-switcher">
+     <button class="switcher-carousel__left-switcher" (click) = "leftYearSwither()"><</button>
+     <div class="switcher-carousel__label year-label">{{currentYear}}</div>
+     <button class="switcher-carousel__right-switcher" (click) = "rightYearSwither()">></button>
  </div>
-     <button class="current-month" (click) = "currentMonthSwitcher()">Current month</button>
+     <button class="buttons-panel__current-month button" (click) = "currentMonthSwitcher()">Current Month</button>
+     <button class="buttons-panel__events-list button" (click) = "navigateToMainList()">Events List</button>
  </div>
 
  <app-shedule-panel [currentYear]='currentYear' [currentMonthNumber]='currentMonthNumber'></app-shedule-panel>

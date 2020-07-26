@@ -5,43 +5,37 @@
     justify-content: start;
     margin: 5px auto;
     font-size: 20px;
-    button{
+    
+    .switcher-carousel{
+        display: flex;
+        justify-content: flex-start;
+        height:50px;
+        border:1px solid lightgrey;
+        .switcher-carousel__label{
+            width: 80%;
+        }
+        .switcher-carousel__left-switcher,.switcher-carousel__right-switcher{
+            width:10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .month-label,.year-label{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .year-switcher,.month-switcher{
+        width:130px;
+        margin:5px 20px;
+    }
+    .button{
+        margin-left: 50px;
+        height:50px;
+        margin:5px 20px;
         font-size: 20px;
     }
 }
 
-.nav-block, .date-block{
-    display:flex; 
-    width:200px;  
-    justify-content: space-around;     
-
-}
-
-.selected{
-    color:red;
-}
-
-.switcher-coruasel{
-   
-    height:50px;
-    display:flex;
-    margin:10px 20px;
-    border:1px solid lightgrey;
-    .year{
-        border:1px solid transparent;
-        padding:15px;
-        
-    }
-
-    .month{
-        text-align: center;
-        width:100px;
-        padding:15px 0px;
-    }
-
-
-}
-
-.current-month{
-    margin:10px 22px;
-}

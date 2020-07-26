@@ -2,7 +2,7 @@
     display:flex;
     justify-content: flex-start;
     border: 1px solid #616161;
-    height: 40px;
+    min-height: 40px;
     margin-top: 5px;
     .title{
       margin: auto 0px;
@@ -18,17 +18,21 @@
     }
     .single-event__event-title-title{
       width: 25%;
+      overflow: hidden;
     }
 
     .single-event-button-block{
       display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
       width: 25%;
     }
 
    .button{
-      width:50%;
       margin:5px;
       padding-left: auto;
+      text-overflow: clip;
+      max-width: 100%;
    }
    
   }

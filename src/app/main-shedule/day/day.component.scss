@@ -1,39 +1,32 @@
-:host{
-    margin:0px;
-    padding:0px;
-}
-
-
 .day{
-    width:100%;
+    max-width:172px;
     height:100%;
     background-color: #81ada0;
     border: 1px solid #0b272d;
-    box-sizing: border-box; 
-    .day-number{
-        font-size: 80px;
+    box-sizing: border-box;
+    margin: 1px;
+    height:172px; 
+    position: relative;
+    
+    .day__number{
+        position:absolute;
+        font-size: 7vw;
         font-weight: bold;
         margin:0px;
+        opacity: 0.5;
+    }
+
+    .day__events-container{
+        width: 100%;
+        display: flex;
+        position: absolute;
+        bottom:3px;
+        left:3px;
     }
     
-    .events-name{
-        margin-top: 0px;
-        margin-right: 5px;
-    }
-
-    .events-panel{
-        display:flex;
-        justify-content: flex-start;
-        margin: 0px 2px;
-    }
-    .events-container{
-        display: flex;
-    }
-
-    .event-symbol{
+    .day__events-container-symbol{
+        font-size: 20px;
         font-weight: bold;
-        line-height: 0.6;
-        font-size: 25px;
     }
 }
 

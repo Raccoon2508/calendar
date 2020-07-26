@@ -10,19 +10,17 @@ import { EventsDB } from '../../day-shedule/services/events.service';
   providers: [CalendarService]
 })
 export class ShedulePanelComponent implements OnInit {
-  @Input() currentMonthNumber;
-  @Input() currentYear;
+  @Input() private currentMonthNumber: number;
+  @Input() private currentYear: number;
   public sheduleArr: (number | string)[];
   constructor( private monthFirstDay: CalendarService, private eventsService: EventsDB) { }
 
-  ngOnChanges() {
+  private ngOnChanges(): void {
     this.sheduleArr = this.monthFirstDay.monthRebuild(this.currentYear, this.currentMonthNumber);
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.sheduleArr = this.monthFirstDay.monthRebuild(this.currentYear, this.currentMonthNumber);
     this.eventsService.loadEvents();
-    console.log(this.currentMonthNumber);
   }
-
 }

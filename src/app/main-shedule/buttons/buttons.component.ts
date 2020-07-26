@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { monthNames } from './models/monthNames';
 import { ShedulePanelComponent } from '../shedule-panel/shedule-panel.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-buttons',
@@ -13,13 +14,17 @@ export class ButtonsComponent implements OnInit {
   public currentYear: number;
   public currentMonthNumber: number;
   public yearSwitcherCounter: number;
-  constructor() {
+  constructor(private router: Router) {
     let monthNamesTempleArr: string[] = [];
     for (let item of monthNames) {
       monthNamesTempleArr.push(item.name + '');
     }
     this.monthNamesArr = monthNamesTempleArr;
   }
+
+private navigateToMainList(): void {
+  this.router.navigate(['events-full-list']);
+}
 
 private leftMonthSwither(): number {
   if (this.currentMonthNumber === 0) {

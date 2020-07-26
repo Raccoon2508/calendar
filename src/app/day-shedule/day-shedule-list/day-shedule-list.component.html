@@ -1,11 +1,10 @@
 <div class = "events-table">
 
-<p class="shedule-date-label">Events Date:{{sheduleDay}}.{{sheduleMonth}}.{{sheduleYear}}</p>
+<p class="events-table__label">Events Date: {{sheduleDay}}.{{sheduleMonth}}.{{sheduleYear}}</p>
 
-<button (click) = "goBack()">Back</button>
-<button (click) = "addRouting()">Add new</button>
-<div class = "events-list">
+<button class = "events-table__button" (click) = "goBack()">Back</button>
+<button class = "events-table__button" (click) = "addRouting()">Add new</button>
+<div class = "events-table__events-list">
 <app-events-list></app-events-list>
 </div>
-
 </div>

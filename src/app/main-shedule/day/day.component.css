@@ -1,47 +1,35 @@
-:host {
-  margin: 0px;
-  padding: 0px;
-}
-
 .day {
-  width: 100%;
+  max-width: 172px;
   height: 100%;
   background-color: #81ada0;
   border: 1px solid #0b272d;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  margin: 1px;
+  height: 172px;
+  position: relative;
 }
 
-.day .day-number {
-  font-size: 80px;
+.day .day__number {
+  position: absolute;
+  font-size: 7vw;
   font-weight: bold;
   margin: 0px;
+  opacity: 0.5;
 }
 
-.day .events-name {
-  margin-top: 0px;
-  margin-right: 5px;
-}
-
-.day .events-panel {
+.day .day__events-container {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  margin: 0px 2px;
+  position: absolute;
+  bottom: 3px;
+  left: 3px;
 }
 
-.day .events-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.day .event-symbol {
+.day .day__events-container-symbol {
+  font-size: 20px;
   font-weight: bold;
-  line-height: 0.6;
-  font-size: 25px;
 }
 /*# sourceMappingURL=day.component.css.map */

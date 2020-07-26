@@ -1,18 +1,17 @@
 <div class = "main-events-list" >
     <div class="options-panel">
         <button class="options-panel__calendar-button button" (click)="routingToCalendar()">To Calendar</button>
-        <button class="options-panel__priority-filter" (click)="priorityFilter('normal')">Priority Filter</button>
         <button class="all-forth-buttons-block__all-forth-button button"
         (click)="allOrForthList()"
         #allOrForthSwitch>Forth</button>
 
-        <div class = "prority-filter-list">
-            <h3 class = "prority-filter-list__title">Priority</h3>    
-            <select class = "prority-filter-list__list"> 
-                <option class = "prority-filter-list__option">All</option>
-                <option class = "prority-filter-list__option">Low</option>
-                <option class = "prority-filter-list__option">Normal</option>
-                <option class = "prority-filter-list__option">High</option>
+        <div class = "priority-filter-list">
+            <h3 class = "priority-filter-list__title">Priority</h3>    
+            <select class = "priority-filter-list__list" #selectList (change) = "priorityFilter()"> 
+                <option class = "priority-filter-list__option" >All</option>
+                <option class = "priority-filter-list__option" >Low</option>
+                <option class = "priority-filter-list__option" >Normal</option>
+                <option class = "priority-filter-list__option" >High</option>
             </select>
         </div>
     </div>

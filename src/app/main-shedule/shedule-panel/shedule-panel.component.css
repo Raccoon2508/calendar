@@ -1,41 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-.week-panel {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  background-color: #bbded6;
-}
-
-.week-panel .weekday {
-  width: 200px;
-  min-width: 50px;
-  text-align: center;
-}
-
-.week-panel .weekday .weekday-name {
-  font-size: 20px;
-  border: 1px solid #8ac6d1;
-  padding: 10px 3px;
-  overflow: hidden;
-}
-
-@media (max-width: 500px) {
-  .week-panel .weekday .weekday-name {
-    font-size: 12px;
-  }
-}
-
 .days-panel {
   display: -ms-grid;
   display: grid;
@@ -46,49 +8,5 @@
       grid-template-columns: auto auto auto auto auto auto auto;
   margin-left: auto;
   margin-right: auto;
-}
-
-.days-panel .day {
-  height: 100px;
-  position: relative;
-}
-
-.days-panel .day-number {
-  position: absolute;
-  font-size: 35px;
-  right: 5px;
-}
-
-a.day {
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: 100%;
-  z-index: 100;
-}
-
-.events-name {
-  position: absolute;
-  bottom: 45px;
-  left: 2%;
-}
-
-.events-panel {
-  position: absolute;
-  height: 40px;
-  bottom: 0px;
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-
-.events-panel .events-container {
-  margin: 2%;
-  width: 20%;
-  height: 50%;
-  background-color: #696969;
 }
 /*# sourceMappingURL=shedule-panel.component.css.map */

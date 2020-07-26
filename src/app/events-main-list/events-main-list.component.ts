@@ -5,7 +5,7 @@ import { EventsMainListService } from './events-main-list.service';
 import { Router } from '@angular/router';
 import { User, SingleEvent, UserEventNode} from '../interfaces.service';
 import { NgControl } from '@angular/forms';
- 
+
 @Component({
   selector: 'app-events-main-list',
   templateUrl: './events-main-list.component.html',
@@ -14,6 +14,7 @@ import { NgControl } from '@angular/forms';
 })
 export class EventsMainListComponent implements OnInit {
   @ViewChild('allOrForthSwitch', {static: false}) private allOrForthSwitch: ElementRef;
+  @ViewChild('selectList', {static: false}) private selectList: ElementRef;
   private eventsLoadedBase: [string, object[]][];
   private priority: string = '';
   private allForth: Boolean = false;
@@ -28,9 +29,9 @@ export class EventsMainListComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  public priorityFilter(priority: string): void {
-    this.priority = priority;
-    this.loadEventsList(this.allForth, this.priority);
+  public priorityFilter(): void {
+    this.priority = this.selectList.nativeElement.selectedOptions[0].innerHTML;
+    this.loadEventsList(this.allForth, this.priority.toLowerCase());
   }
 
   public allOrForthList(): void {
@@ -39,13 +40,11 @@ export class EventsMainListComponent implements OnInit {
     let buttonText: string = this.allOrForthSwitch.nativeElement.textContent;
     buttonText === 'Forth' ? this.allOrForthSwitch.nativeElement.textContent = 'All'
     : this.allOrForthSwitch.nativeElement.textContent = 'Forth';
-    this.cdr.detectChanges();
   }
 
   public loadEventsList(allForth: Boolean, priority: string): void {
     this.eventsBase.loadEvents().subscribe(data => {
       this.eventsLoadedBase = this.mainListService.sortEventsList(data, allForth, priority);
-      console.log(data);
     });
   }
 
