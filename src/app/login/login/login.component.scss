@@ -1,4 +1,4 @@
-.user-login{
+.user-login-form{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,33 +12,50 @@
     margin-left: auto;
     margin-right: auto;
     padding: 0;
-    h2{
+    .user-login-form__title,
+    .user-login-form__error-message-title{
         margin-top:30px;
         font-size: 25px;
         font-weight: bold;
     }
 
-    label{
+    .user-login-form__email-input-label,
+    .user-login-form__password-input-label{
         width:300px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-top: 10px;
+        position: relative;
 
-        input{
+        .user-login-form__email-input,
+        .user-login-form__password-input{
             margin-top:auto;
             margin-bottom: auto;
+            position: relative;
         }
+        .user-login-form__show-pass{
+          background-image: url('/assets/eye.png');
+          background-size: 20px;
+          background-repeat: no-repeat;
+          background-position: center;
+          position: absolute;
+          right: 0px;
+          width:30px;
+          height:30px;
+      }
     }
-    .button-block{
+    .user-login-form__buttons{
         margin:30px;
-        button{
+        .user-login-form__delete-button,
+        .user-login-form__registration-button
+        {
             margin:10px;
         }
         
     }
 
-    .errorMessage{
+    .user-login-form__error-message{
         display:none;
         justify-content: center;
         align-items: center;
@@ -46,13 +63,10 @@
         height:100%;
         width:100%;
         background-color: rgba(#ffa5a9,0.7);
-        .error-message__title{
+        .user-login-form__error-message-title{
             top:50%;
             left: 50%;
           }
-
-          
-          
       }
 
       .show{

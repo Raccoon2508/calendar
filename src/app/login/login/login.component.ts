@@ -6,8 +6,6 @@ import { ChangeDetectorRef } from '@angular/core';
 import { ApplicationRef } from '@angular/core';
 import { EventsDB } from '../../day-shedule/services/events.service';
 
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -19,6 +17,7 @@ export class LoginComponent implements OnInit {
   private pass: string = '1234';
   private errorMessage: boolean = false;
   private registratedUsers: {[x: string]: string |number}[];
+  private passTextType: string = 'password';
 
   constructor(private loginService: LoginService,
               private router: Router,
@@ -41,16 +40,19 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  private registerNewUser(): void{
+  private showPass(): void {
+    if (this.passTextType === 'password') { this.passTextType = 'text';
+  } else { this.passTextType = 'password'; }
+  }
+
+  private registerNewUser(): void {
     this.loginService.logoutUser();
     this.router.navigate(['new-user']);
 
   }
 
-
-  ngOnInit() {
-
-    this.eventsDB.loadUsersBase().subscribe((data) => {
+  public ngOnInit(): void {
+      this.eventsDB.loadUsersBase().subscribe((data) => {
       this.registratedUsers = data;
       this.cdr.detectChanges();
     });

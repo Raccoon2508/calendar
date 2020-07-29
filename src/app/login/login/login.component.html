@@ -15,9 +15,11 @@
     </label>
     
     <label class = "user-login-form__password-input-label">Password:
-      <input type="password"
+      <input 
+             [attr.type]="passTextType"
              [(ngModel)]="pass"
              class = "user-login-form__password-input">
+      <button class ='user-login-form__show-pass' (click)='showPass()'></button>       
     </label>
 
     <div class = "user-login-form__buttons">
@@ -29,7 +31,7 @@
       <h2 class="user-login-form__error-message-title">Registerated users for testing:</h2>
       <p class = "user-login-form__empty-list-message_invisible" *ngIf="!registratedUsers">List unavailable or empty</p>
       <ul class="users-list">
-        <li class="single-user" *ngFor="let item of registratedUsers">User: {{item.email}} Pass: {{item.pass}}</li>
+        <li class="single-user" *ngFor="let item of registratedUsers"> <b>User:</b> {{item.email}}   <b>Password:</b> {{item.pass}}</li>
       </ul>
     </div>
 

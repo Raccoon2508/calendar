@@ -1,4 +1,4 @@
-.user-login {
+.user-login-form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -22,13 +22,15 @@
   padding: 0;
 }
 
-.user-login h2 {
+.user-login-form .user-login-form__title,
+.user-login-form .user-login-form__error-message-title {
   margin-top: 30px;
   font-size: 25px;
   font-weight: bold;
 }
 
-.user-login label {
+.user-login-form .user-login-form__email-input-label,
+.user-login-form .user-login-form__password-input-label {
   width: 300px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -40,22 +42,40 @@
       -ms-flex-align: center;
           align-items: center;
   margin-top: 10px;
+  position: relative;
 }
 
-.user-login label input {
+.user-login-form .user-login-form__email-input-label .user-login-form__email-input,
+.user-login-form .user-login-form__email-input-label .user-login-form__password-input,
+.user-login-form .user-login-form__password-input-label .user-login-form__email-input,
+.user-login-form .user-login-form__password-input-label .user-login-form__password-input {
   margin-top: auto;
   margin-bottom: auto;
+  position: relative;
 }
 
-.user-login .button-block {
+.user-login-form .user-login-form__email-input-label .user-login-form__show-pass,
+.user-login-form .user-login-form__password-input-label .user-login-form__show-pass {
+  background-image: url("/assets/eye.png");
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  right: 0px;
+  width: 30px;
+  height: 30px;
+}
+
+.user-login-form .user-login-form__buttons {
   margin: 30px;
 }
 
-.user-login .button-block button {
+.user-login-form .user-login-form__buttons .user-login-form__delete-button,
+.user-login-form .user-login-form__buttons .user-login-form__registration-button {
   margin: 10px;
 }
 
-.user-login .errorMessage {
+.user-login-form .user-login-form__error-message {
   display: none;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -69,12 +89,12 @@
   background-color: rgba(255, 165, 169, 0.7);
 }
 
-.user-login .errorMessage .error-message__title {
+.user-login-form .user-login-form__error-message .user-login-form__error-message-title {
   top: 50%;
   left: 50%;
 }
 
-.user-login .show {
+.user-login-form .show {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

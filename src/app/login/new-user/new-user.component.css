@@ -47,7 +47,7 @@
   margin-bottom: auto;
 }
 
-.user-create label .show-pass {
+.user-create label .user-login-form__show-pass {
   background-image: url("/assets/eye.png");
   background-size: 20px;
   background-repeat: no-repeat;
