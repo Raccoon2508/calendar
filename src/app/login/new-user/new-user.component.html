@@ -1,6 +1,6 @@
-<div class = "user-create" autocomplete="off"> 
-    <h2>Please, create new user!</h2>
-    <label>Name:<input type="text"
+<div class = "user-create-form" autocomplete="off"> 
+    <h2 class = "user-create-form__header">Please, create new user!</h2>
+    <label class = "user-create-form__input-label">Name:<input type="text"
         [(ngModel)] = "userName" 
         placeholder="please, insert your name"
         #nameInput = "ngModel"
@@ -8,22 +8,28 @@
         required>
     </label>
 
-    <label>Email:<input type="email"
+    <label class = "user-create-form__input-label">Email:
+        <input type="email"
+        class = "user-create-form__email-input"
         [(ngModel)] = "email" 
         placeholder="please, write your email"
         #emailInput = "ngModel"
         [class.uncorrect] = "!correctEmail"
-       
         required>
     </label>
-    <label>Password:<input 
+    <label class = "user-create-form__input-label">Password:<input 
+        class = "user-create-form__password-input"
         [attr.type]="passTextType"
         [(ngModel)]="firstPass"
         #firstPassInput
         [class.uncorrect] = "!correctRepeatedPass"
         placeholder="write you password">
-        <button class ='show-pass' (click)='showPass()'></button></label>
-    <label>Repeat password:<input 
+        <button class ="user-login-form__show-pass"
+                (click)="showPass()">
+        </button>
+    </label>
+    <label class = "user-create-form__input-label">Repeat password:<input 
+        class = "user-create-form__repeat-password-input"
         [attr.type]="passTextType"
         [(ngModel)]="secondPass"
         #secondPassInput
@@ -32,11 +38,19 @@
         >
         
     </label>
-    <div class="button-block">
-        
+    <div class="user-create-form__buttons">
         <button (click) = "createUser()"
-        [disabled]="!correctRepeatedPass||!correctEmail||!correctName">Create</button>
-        <button (click) = "goBack()">Back</button>
-
-    </div>    
+        [disabled]="!correctRepeatedPass||!correctEmail||!correctName"
+        class = "user-create-form__create-button">Create</button>
+        <button (click) = "goBack()"
+        class = "user-create-form__back-button">Back</button>
+    </div> 
+    <div class = "user-create-form__user-created-message_invisible" 
+         [class.show] = "userCreatedMessage === true">
+      <h2 class = "user-create-form__title">Created! Redirection...</h2>
+    </div> 
+    <div class = "user-create-form__user-exist-message_invisible" 
+         [class.show] = "userExist === true">
+      <h2 class = "user-create-form__title">User Exist! Try another email!</h2>
+    </div>        
 </div>

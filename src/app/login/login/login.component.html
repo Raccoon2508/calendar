@@ -1,9 +1,6 @@
 <div class = "user-login-form">
 
-  <div class = "user-login-form__error-message" 
-       [class.show] = "errorMessage === true">
-    <h2 class="user-login-form__error-message-title">Uncorrect Login or Password</h2>
-  </div>  
+  
 
     <h2 class = "user-login-form__title">Please, login!</h2>
     <label class = "user-login-form__email-input-label">Email:
@@ -28,12 +25,17 @@
     </div>
     
     <div class = "user-login-form__registered-users-list">
-      <h2 class="user-login-form__error-message-title">Registerated users for testing:</h2>
+      <h2 class="user-login-form__error-message-title">Registrated users for testing:</h2>
       <p class = "user-login-form__empty-list-message_invisible" *ngIf="!registratedUsers">List unavailable or empty</p>
       <ul class="users-list">
         <li class="single-user" *ngFor="let item of registratedUsers"> <b>User:</b> {{item.email}}   <b>Password:</b> {{item.pass}}</li>
       </ul>
     </div>
+    
+    <div class = "user-login-form__error-message" 
+       [class.show] = "errorMessage === true">
+    <h2 class="user-login-form__error-message-title">Uncorrect Login or Password</h2>
+  </div>  
 
 </div>   
 

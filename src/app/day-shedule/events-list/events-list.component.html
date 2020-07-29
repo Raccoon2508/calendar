@@ -7,7 +7,7 @@
     <p class= "delete-edit-title title">Delete<wbr>/Edit</p>
     
 </div>
-   
+<h2 class = "events-table__empty-list" *ngIf="eventsDataBase.length === 0">No Events</h2>   
 <div class = "single-event" *ngFor = "let item of eventsDataBase" >
 <app-single-event [singleEvent] = 'item' (emmited) = "ngOnInit()"></app-single-event>
 </div>

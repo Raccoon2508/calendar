@@ -30,12 +30,12 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.email, this.pass).subscribe((item: UserObject) => {
       if (item.userID) {
         this.loginService.loginUser(item);
-        this.router.navigate(['']);
+        this.router.navigate(['/events-full-list']);
       } else {
-        throw new Error('some problem with login');
         this.loginService.logoutUser();
         this.errorMessage = true;
         setTimeout(() => this.errorMessage = false, 2000);
+        throw new Error('some problem with login');
       }
     });
   }
@@ -48,13 +48,12 @@ export class LoginComponent implements OnInit {
   private registerNewUser(): void {
     this.loginService.logoutUser();
     this.router.navigate(['new-user']);
-
   }
 
   public ngOnInit(): void {
-      this.eventsDB.loadUsersBase().subscribe((data) => {
-      this.registratedUsers = data;
-      this.cdr.detectChanges();
-    });
+   this.eventsDB.loadUsersBase().subscribe((data) => {
+   this.registratedUsers = data.reverse();
+   this.cdr.detectChanges();
+   });
   }
 }

@@ -1,4 +1,4 @@
-.user-create {
+.user-create-form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -18,16 +18,15 @@
           box-shadow: 2px 2px 2px 2px #616161;
   margin-left: auto;
   margin-right: auto;
-  padding: 30px;
 }
 
-.user-create h2 {
+.user-create-form .user-create-form__title {
   margin-top: 0px;
   font-size: 25px;
   font-weight: bold;
 }
 
-.user-create label {
+.user-create-form .user-create-form__input-label {
   width: 300px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -42,12 +41,14 @@
   margin-top: 10px;
 }
 
-.user-create label input {
+.user-create-form .user-create-form__input-label .user-create-form__email-input,
+.user-create-form .user-create-form__input-label .user-create-form__password-input,
+.user-create-form .user-create-form__input-label .user-create-form__repeat-password-input {
   margin-top: auto;
   margin-bottom: auto;
 }
 
-.user-create label .user-login-form__show-pass {
+.user-create-form .user-create-form__input-label .user-login-form__show-pass {
   background-image: url("/assets/eye.png");
   background-size: 20px;
   background-repeat: no-repeat;
@@ -58,15 +59,16 @@
   height: 30px;
 }
 
-.user-create .button-block {
+.user-create-form .user-create-form__buttons {
   margin-top: 30px;
 }
 
-.user-create .button-block button {
+.user-create-form .user-create-form__buttons .user-create-form__create-button,
+.user-create-form .user-create-form__buttons .user-create-form__back-button {
   margin: 10px;
 }
 
-.user-create :invalid, .user-create .uncorrect {
+.user-create-form :invalid, .user-create-form .uncorrect {
   background-color: #ffa5a9;
   -webkit-animation-duration: 0.5s;
           animation-duration: 0.5s;
@@ -89,6 +91,94 @@
   }
   to {
     background-color: #ffa5a9;
+  }
+}
+
+.user-create-form .user-create-form__user-created-message_invisible {
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.user-create-form .user-create-form__user-exist-message_invisible {
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #ffa5a9;
+}
+
+.user-create-form .user-create-form__user-created-message_invisible.show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+
+.user-create-form .user-create-form__user-exist-message_invisible.show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-name: fadeIn, fadeOut;
+          animation-name: fadeIn, fadeOut;
+  -webkit-animation-delay: 0s, 1s;
+          animation-delay: 0s, 1s;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 /*# sourceMappingURL=new-user.component.css.map */

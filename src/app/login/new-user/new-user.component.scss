@@ -1,4 +1,4 @@
-.user-create{
+.user-create-form{
     display: flex;
      flex-direction: column;
     align-items: center;
@@ -10,22 +10,23 @@
     box-shadow: 2px 2px 2px 2px #616161;
     margin-left: auto;
     margin-right: auto;
-    padding: 30px;
-    h2{
+    .user-create-form__title{
         margin-top:0px;
         font-size: 25px;
         font-weight: bold;
     }
 
-    label{
+    .user-create-form__input-label{
         width:300px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         position: relative;
         margin-top: 10px;
-
-        input{
+        .user-create-form__email-input,
+        .user-create-form__password-input,
+        .user-create-form__repeat-password-input
+        {
             
             margin-top:auto;
             margin-bottom: auto;
@@ -41,9 +42,11 @@
             height:30px;
         }
     }
-    .button-block{
+    .user-create-form__buttons{
         margin-top:30px;
-        button{
+        
+        .user-create-form__create-button,
+        .user-create-form__back-button{
             margin:10px;
         }
         
@@ -54,14 +57,66 @@
         background-color: #ffa5a9;
         animation-duration: 0.5s;
         animation-name: fade;
-      }
+    }
       
-      @keyframes fade{
+    @keyframes fade{
         from{
           background-color: white;
         }
         to{
           background-color: #ffa5a9;
         }
+    }
+
+    .user-create-form__user-created-message_invisible{
+      display: none;
+      justify-content: center;
+      align-items: center;
+      position:absolute;
+      height:100%;
+      width:100%;
+      background-color: rgba(255,255,255,0.7); 
+    }
+
+    .user-create-form__user-exist-message_invisible{
+      display: none;
+      justify-content: center;
+      align-items: center;
+      position:absolute;
+      height:100%;
+      width:100%;
+      background-color: #ffa5a9;
+    }
+
+    .user-create-form__user-created-message_invisible.show{
+      display: flex;
+      animation-duration: 2s;
+      animation-name: fadeIn;
+      animation-delay: 0s;
+    }
+    .user-create-form__user-exist-message_invisible.show{
+      display: flex;
+      animation-duration: 2s;
+      animation-name: fadeIn, fadeOut;
+      animation-delay: 0s, 1s;
+    }
+
+
+      @keyframes fadeIn{
+      0%{
+        opacity: 0;
       }
+      100%{
+        opacity: 1;
+      }
+     }
+
+     @keyframes fadeOut{
+      0%{
+        opacity: 1;
+      }
+      100%{
+        opacity: 0;
+      }
+     }
 }
