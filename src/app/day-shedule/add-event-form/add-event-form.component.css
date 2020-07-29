@@ -1,103 +1,198 @@
-.form-group2{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width:400px;
-  position:relative;
-  background-color: #bbded6;
-  font-family: 'Roboto', Arial, sans-serif;
-  color: #616161;
-  box-shadow: 2px 2px 2px 2px #616161;
+.event-add-form {
+  max-width: 400px;
   margin-left: auto;
   margin-right: auto;
-  
-
-}
-
-label{
-  width:70%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-  font-size:20px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #bbded6;
+  -webkit-box-shadow: 2px 2px 2px 2px #616161;
+          box-shadow: 2px 2px 2px 2px #616161;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
 }
 
-input{
-  width:35%;
+.event-add-form .event-add-form__title {
+  font-size: 30px;
 }
 
-input.title, textarea{
-  width: 60%;
+.event-add-form .event-add-form__label {
+  width: 300px;
+  position: relative;
+  height: 40px;
 }
 
-.priority-radiobuttons{
+.event-add-form .event-add-form__label .form-input {
+  position: absolute;
+  right: 0px;
+  margin: 0px 5px;
+  height: 30px;
+  width: 180px;
+}
+
+.event-add-form .event-add-form__label .event-add-form__time-to,
+.event-add-form .event-add-form__label .event-add-form__time-from {
+  width: 90px;
+}
+
+.event-add-form .event-add-form__label .form-textarea {
+  position: absolute;
+  right: 0px;
+  width: 180px;
+  margin: 0 5px;
+}
+
+.event-add-form .textarea {
+  height: 70px;
+}
+
+.event-add-form .event-add-form__percipitians-list-item {
+  width: 300px;
+}
+
+.event-add-form .event-add-form__percipitians-list {
+  padding: 0px;
+  position: relative;
+}
+
+.event-add-form .event-add-form__percipitians-list .event-add-form__percipitians-list-item {
+  margin-top: 5px;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.event-add-form .event-add-form__percipitians-list .event-add-form__percipitians-delete-button {
+  right: 0px;
+  height: 100%;
+}
+
+.event-add-form .event-add-form__registrated-users .event-add-form__registrated-users-list {
+  height: 100px;
+  width: 250px;
+}
+
+.event-add-form .event-add-form__registrated-users .event-add-form__registrated-users-list .event-add-form__registrated-users-list-item {
+  font-size: 15px;
+}
+
+.event-add-form .event-add-form__priority-form-radiobuttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
-.priority-radiobuttons label{
-  margin:0px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.event-add-form .event-add-form__priority-form-radiobuttons .event-add-form__priority-form-radiobuttons-label {
+  margin: 0px 20px;
 }
 
-.uncorrect{
+.event-add-form .event-add-form__button-block {
+  margin: 20px;
+}
+
+.event-add-form .event-add-form__button-block .event-add-form__button-submit,
+.event-add-form .event-add-form__button-block .event-add-form__button-back {
+  margin: 0 10px;
+}
+
+.event-add-form .event-add-form__event-edited-message_invisible {
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.event-add-form .show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-animation-duration: 1s, 1s;
+          animation-duration: 1s, 1s;
+  -webkit-animation-name: fadeIn, fadeOut;
+          animation-name: fadeIn, fadeOut;
+  -webkit-animation-delay: 0s, 1s;
+          animation-delay: 0s, 1s;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.event-add-form .uncorrect {
   background-color: #ffa5a9;
-  animation-duration: 0.5s;
-  animation-name: fade;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-name: fade;
+          animation-name: fade;
 }
 
-@keyframes fade{
-  from{
+@-webkit-keyframes fade {
+  from {
     background-color: white;
   }
-  to{
+  to {
     background-color: #ffa5a9;
   }
 }
 
-.submit, .back{
-  margin:20px;
+@keyframes fade {
+  from {
+    background-color: white;
+  }
+  to {
+    background-color: #ffa5a9;
+  }
 }
-
-.addMessage{
-  display:none;
-  justify-content: center;
-  align-items: center;
-  position:absolute;
-  height:100%;
-  width:100%;
-  background-color: rgba(255,255,255,0.7);
-    
-}
-
-.addMessage p{
-  top:50%;
-  left: 50%;
-}
-
-.show{
-  display:flex;
-  animation-duration: 1s, 1s;
-  animation-name: fadeIn, fadeOut;
-  animation-delay: 0s, 1s;
-}
-
-
-@keyframes fadeIn{
- 0%{
-   opacity: 0;
- }
- 100%{
-   opacity: 1;
- }
-}
-
-@keyframes fadeOut{
- 0%{
-   opacity: 1;
- }
- 100%{
-   opacity: 0;
- }
-}
+/*# sourceMappingURL=add-event-form.component.css.map */

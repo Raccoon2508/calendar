@@ -1,1 +1,198 @@
-/* No CSS *//*# sourceMappingURL=edit-event-form.component.css.map */
+.event-edit-form {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #bbded6;
+  -webkit-box-shadow: 2px 2px 2px 2px #616161;
+          box-shadow: 2px 2px 2px 2px #616161;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.event-edit-form .event-edit-form__title {
+  font-size: 30px;
+}
+
+.event-edit-form .event-edit-form__label {
+  width: 300px;
+  position: relative;
+  height: 40px;
+}
+
+.event-edit-form .event-edit-form__label .form-input {
+  position: absolute;
+  right: 0px;
+  margin: 0px 5px;
+  height: 30px;
+  width: 180px;
+}
+
+.event-edit-form .event-edit-form__label .event-edit-form__time-to,
+.event-edit-form .event-edit-form__label .event-edit-form__time-from {
+  width: 90px;
+}
+
+.event-edit-form .event-edit-form__label .form-textarea {
+  position: absolute;
+  right: 0px;
+  width: 180px;
+  margin: 0 5px;
+}
+
+.event-edit-form .textarea {
+  height: 70px;
+}
+
+.event-edit-form .event-edit-form__percipitians-list-item {
+  width: 300px;
+}
+
+.event-edit-form .event-edit-form__percipitians-list {
+  padding: 0px;
+  position: relative;
+}
+
+.event-edit-form .event-edit-form__percipitians-list .event-edit-form__percipitians-list-item {
+  margin-top: 5px;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.event-edit-form .event-edit-form__percipitians-list .event-edit-form__percipitians-delete-button {
+  right: 0px;
+  height: 100%;
+}
+
+.event-edit-form .event-edit-form__registrated-users .event-edit-form__registrated-users-list {
+  height: 100px;
+  width: 250px;
+}
+
+.event-edit-form .event-edit-form__registrated-users .event-edit-form__registrated-users-list .event-edit-form__registrated-users-list-item {
+  font-size: 15px;
+}
+
+.event-edit-form .event-edit-form__priority-form-radiobuttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.event-edit-form .event-edit-form__priority-form-radiobuttons .event-edit-form__priority-form-radiobuttons-label {
+  margin: 0px 20px;
+}
+
+.event-edit-form .event-edit-form__button-block {
+  margin: 20px;
+}
+
+.event-edit-form .event-edit-form__button-block .event-edit-form__button-submit,
+.event-edit-form .event-edit-form__button-block .event-edit-form__button-back {
+  margin: 0 10px;
+}
+
+.event-edit-form .event-edit-form__event-edited-message_invisible {
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.event-edit-form .show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-animation-duration: 1s, 1s;
+          animation-duration: 1s, 1s;
+  -webkit-animation-name: fadeIn, fadeOut;
+          animation-name: fadeIn, fadeOut;
+  -webkit-animation-delay: 0s, 1s;
+          animation-delay: 0s, 1s;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.event-edit-form .uncorrect {
+  background-color: #ffa5a9;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-name: fade;
+          animation-name: fade;
+}
+
+@-webkit-keyframes fade {
+  from {
+    background-color: white;
+  }
+  to {
+    background-color: #ffa5a9;
+  }
+}
+
+@keyframes fade {
+  from {
+    background-color: white;
+  }
+  to {
+    background-color: #ffa5a9;
+  }
+}
+/*# sourceMappingURL=edit-event-form.component.css.map */

@@ -64,7 +64,7 @@ export class AddEventFormComponent implements OnInit {
     this.eventObj.timeTo = this.timeTo;
     this.eventObj.title = this.title;
     this.eventObj.comment = this.comment;
-    this.eventObj.priority = this.priority;
+    this.eventObj.priority = this.priority || 'normal';
 
     this.connectionEventUser.eventID = +this.eventObj.id;
     this.connectionEventUser.userID = +localStorage.getItem('calendarUserId');
@@ -73,15 +73,13 @@ export class AddEventFormComponent implements OnInit {
     setTimeout(() => this.addedMessage = false, 2000);
     this.eventsDataBase.postEvent(eventAndInvitedInfo);
     (this.eventsDataBase.eventsBase.usersEvents).push(this.connectionEventUser);
-    
   }
 
- private preAdd(i) {
+ private preAdd(i: number): void {
     if (i !== this.userID) {(this.iventedUsers).add(this.registratedUsers[i]); }
   }
 
-  private preDeleteUser(item) {
-    console.log(this.iventedUsers.keys());
+  private preDeleteUser(item: {[x: string]: string|number}): void {
     (this.iventedUsers).delete(item);
   }
 

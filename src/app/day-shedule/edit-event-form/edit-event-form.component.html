@@ -1,13 +1,8 @@
-<div class="form-group">
-    <div class = 'addMessage' 
-    [class.show] = "addedMessage === true">
-      <h2>Event Added</h2>
-    </div>  
-
-
-    <h2>Edit Event</h2>
-    <label>Time From
+<div class="event-edit-form">
+    <h1 class = "event-edit-form__title">Edit Event</h1>
+    <label class = "event-edit-form__label">Time From
       <input
+      class = "event-edit-form__time-from form-input"
       type = "time"
       [(ngModel)]= "timeFrom"
       #timeFromInput = 'ngModel'
@@ -15,20 +10,20 @@
       required>
     </label>
 
-    <label>Time To
+    <label class = "event-edit-form__label">Time To
        <input 
        type = "time"
-       class="timeTo"
+       class = "event-edit-form__time-to form-input"
        [(ngModel)]= "timeTo"
        #timeToInput = 'ngModel'
        [class.uncorrect] = "timeToInput.touched && timeToInput.invalid"
        required>
      </label>
 
-    <label>Title 
+    <label class = "event-edit-form__label">Title 
       <input
       type = "text"
-      class="title"
+      class="event-edit-form__event-title form-input"
       #titleInput ="ngModel"
       [(ngModel)]= "title"
       [class.uncorrect] = "titleInput.touched && titleInput.invalid"
@@ -37,32 +32,47 @@
       >
     </label>
 
-    <label>Comment 
-      <textarea class="title" 
+    <label class = "event-edit-form__label textarea">Comment 
+      <textarea 
+      class="event-edit-form__comment form-textarea" 
       rows = "4"
       [(ngModel)]= "comment"
       required>
       </textarea>
     </label>
 
-    <div class="tooked-part-users-list">
-      <h2>Invented users</h2>
-      <ul class="percipitians-list">
-      <li style="list-style: none;" *ngFor = "let item of invitedUsers">{{item.name}} ({{item.email}})<button class="delete-button" (click) = "preDeleteUser(item)">X</button></li>
+    <h2 class = "event-edit-form__title">Invented users</h2>
+    <div class="event-edit-form__percipitians">
+      <ul class="event-edit-form__percipitians-list">
+      <li class="event-edit-form__percipitians-list-item"
+        style="list-style: none;" 
+        *ngFor = "let item of invitedUsers"
+        >{{item.name}} ({{item.email}})
+          <button class="event-edit-form__percipitians-delete-button"
+          (click) = "preDeleteUser(item)"
+          >X</button>
+      </li>
       </ul>
     </div>
 
-    <form action="formdata" method="post" name="participants-list">
-      <h2>Select participants</h2>
-      <p>
-      <select name="list1" multiple>
-           <option *ngFor="let item of registratedUsers; index as i" (click) = "preAdd(i)">{{item.name}} ({{item.email}})</option>
-      </select></p>
+    <form action="formdata"
+          method="post" 
+          name="participants-list"
+          class = "event-edit-form__registrated-users">
+      <h2 class = "event-edit-form__title">Select participants</h2>
+      <select name="list1"
+              class = "event-edit-form__registrated-users-list"
+              multiple>
+           <option *ngFor="let item of registratedUsers; index as i"
+                   (click) = "preAdd(i)"
+                   class = "event-edit-form__registrated-users-list-item"
+                   >{{item.name}} ({{item.email}})</option>
+      </select>
     </form>
     
-    <h3>Priority</h3>
-    <div class = "priority-radiobuttons">
-      <label>High
+    <h3 class = "event-edit-form__priority-form-title">Priority</h3>
+    <div class = "event-edit-form__priority-form-radiobuttons">
+      <label class = "event-edit-form__priority-form-radiobuttons-label">High
         <input
         type = "radio"
         name="priority"
@@ -73,7 +83,7 @@
         
       </label>
       
-      <label>Normal
+      <label class = "event-edit-form__priority-form-radiobuttons-label">Normal
         <input type = "radio"
         name="priority"
         value="normal"
@@ -82,7 +92,7 @@
         >
       </label>
       
-      <label>Low
+      <label class = "event-edit-form__priority-form-radiobuttons-label">Low
         <input
         type = "radio"
         name="priority"
@@ -93,13 +103,18 @@
       </label>
     </div>
     
-    <div class = "button-block">
-    <button type="submit"
-    class="submit"
-    (click)="saveEvent()"
-    [disabled]="timeFromInput.invalid || timeToInput.invalid || titleInput.invalid">
-    Save
-    </button>
-    <button class="back" (click)="goBack()">Back</button>
-    </div>  
+    <div class = "event-edit-form__button-block">
+      <button type="submit"
+              class = "event-edit-form__button-submit" 
+              (click)="saveEvent()"
+              [disabled]="timeFromInput.invalid || timeToInput.invalid || titleInput.invalid"
+      >Save</button>
+      <button class = "event-edit-form__button-back" 
+              (click)="goBack()"
+      >Back</button>
+    </div> 
+    <div class = "event-edit-form__event-edited-message_invisible" 
+    [class.show] = "addedMessage === true">
+      <h2 class = "event-edit-form__title">Event Edited</h2>
+    </div>   
 </div>  

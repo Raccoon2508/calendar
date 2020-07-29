@@ -22,9 +22,6 @@ function weekday(yearX: number, monthX: number): number {
   } else {
     month -= 2;
   }
-  console.log('year', yearX);
-  console.log('zeroday', yearX, monthX, Math.floor(31 * month /
-     12 + yearX + yearX / 4 - yearX / 100 + yearX / 400) % 7 );
   return Math.floor(31 * month / 12 + yearX + yearX / 4 - yearX / 100 + yearX / 400) % 7;
 }
 
@@ -48,7 +45,7 @@ switch (month) {
  }
 }
 
-ngOnInit() {
+public ngOnInit(): void {
 }
 
 }

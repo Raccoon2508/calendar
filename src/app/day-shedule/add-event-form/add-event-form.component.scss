@@ -1,4 +1,4 @@
-.event-edit-form{
+.event-add-form{
     max-width: 400px; 
     margin-left: auto;
     margin-right: auto;
@@ -8,10 +8,10 @@
     box-shadow: 2px 2px 2px 2px #616161;
     align-items: center;
     position: relative;
-    .event-edit-form__title{
+    .event-add-form__title{
         font-size: 30px;
     }
-    .event-edit-form__label{
+    .event-add-form__label{
         width: 300px;
         position: relative;
         height: 40px;
@@ -22,8 +22,8 @@
             height: 30px;
             width: 180px;
         }
-        .event-edit-form__time-to,
-        .event-edit-form__time-from {
+        .event-add-form__time-to,
+        .event-add-form__time-from {
             width: 90px;
         }
     
@@ -37,51 +37,51 @@
     .textarea{
         height: 70px;
     }
-    .event-edit-form__percipitians-list-item{
+    .event-add-form__percipitians-list-item{
         width: 300px;
     }
-    .event-edit-form__percipitians-list{
+    .event-add-form__percipitians-list{
         padding: 0px;
         position: relative;
-       .event-edit-form__percipitians-list-item{
+       .event-add-form__percipitians-list-item{
              margin-top:5px;
              height: 30px;
              display: flex;
              justify-content: space-between;
              align-items: center;
         }
-        .event-edit-form__percipitians-delete-button{
+        .event-add-form__percipitians-delete-button{
            right: 0px;
            height: 100%;
         }
         
     }
-    .event-edit-form__registrated-users{
-        .event-edit-form__registrated-users-list{
+    .event-add-form__registrated-users{
+        .event-add-form__registrated-users-list{
             height: 100px;
             width: 250px;
-            .event-edit-form__registrated-users-list-item{
+            .event-add-form__registrated-users-list-item{
                 font-size: 15px;
             }
         }
 
     }
 
-    .event-edit-form__priority-form-radiobuttons{
+    .event-add-form__priority-form-radiobuttons{
         display:flex;
-        .event-edit-form__priority-form-radiobuttons-label{
+        .event-add-form__priority-form-radiobuttons-label{
             margin: 0px 20px;
         }
     }
     
-    .event-edit-form__button-block{
+    .event-add-form__button-block{
         margin: 20px;
-        .event-edit-form__button-submit,
-        .event-edit-form__button-back{
+        .event-add-form__button-submit,
+        .event-add-form__button-back{
             margin: 0 10px;
         }
     }
-    .event-edit-form__event-edited-message_invisible{
+    .event-add-form__event-edited-message_invisible{
         display: none;
         justify-content: center;
         align-items: center;

@@ -1,21 +1,33 @@
-<div class = "user-login">
+<div class = "user-login-form">
 
-    <div class = 'errorMessage' 
-        [class.show] = "errorMessage === true">
-    <h2 class='error-message__title'>Uncorrect Login or Password</h2>
+  <div class = "user-login-form__error-message" 
+       [class.show] = "errorMessage === true">
+    <h2 class="user-login-form__error-message-title">Uncorrect Login or Password</h2>
   </div>  
 
-    <h2>Please, login!</h2>
-    <label>Email:<input type="email" placeholder="please, write your email" [(ngModel)]="email"></label>
-    <label>Password:<input type="password" [(ngModel)]="pass"></label>
-    <div class = "button-block">
-    <button (click) = "login()">Login</button>
-    <button (click) = "registerNewUser()" >Registration</button>
+    <h2 class = "user-login-form__title">Please, login!</h2>
+    <label class = "user-login-form__email-input-label">Email:
+      <input 
+             class = "user-login-form__email-input"   
+             type="email"
+             placeholder="please, write your email"
+             [(ngModel)]="email">
+    </label>
+    
+    <label class = "user-login-form__password-input-label">Password:
+      <input type="password"
+             [(ngModel)]="pass"
+             class = "user-login-form__password-input">
+    </label>
+
+    <div class = "user-login-form__buttons">
+      <button class = "user-login-form__delete-button" (click) = "login()">Login</button>
+      <button class = "user-login-form__registration-button" (click) = "registerNewUser()">Registration</button>
     </div>
     
-    <div class = "registered-users">
-      <h2>Registerated users for testing:</h2>
-      <p *ngIf="!registratedUsers">List unavailable or empty</p>
+    <div class = "user-login-form__registered-users-list">
+      <h2 class="user-login-form__error-message-title">Registerated users for testing:</h2>
+      <p class = "user-login-form__empty-list-message_invisible" *ngIf="!registratedUsers">List unavailable or empty</p>
       <ul class="users-list">
         <li class="single-user" *ngFor="let item of registratedUsers">User: {{item.email}} Pass: {{item.pass}}</li>
       </ul>

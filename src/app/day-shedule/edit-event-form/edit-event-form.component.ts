@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { EventsDB } from '../services/events.service';
 import { Location } from '@angular/common';
 import { MyEvent } from '../models/event';
+import { User, UserEventNode, SingleEvent } from '../../interfaces.service';
 
 @Component({
   selector: 'app-edit-event-form',
@@ -22,9 +23,10 @@ export class EditFormComponent implements OnInit {
   private month: number;
   private year: number;
   private userId: number;
-  private invitedUsers: {[x: string]: string|number}[];
-  private registratedUsers: {[x: string]: string|number}[];
-  private deletedUsers: {[x: string]: string|number}[] = [];
+  private invitedUsers: User[];
+  private registratedUsers: User[];
+  private deletedUsers: User[] = [];
+  private addedMessage: Boolean = false;
 
 constructor(
     private router: Router,
@@ -32,12 +34,12 @@ constructor(
     private eventsDb: EventsDB,
     private location: Location) { }
 
-  private goBack(): void {
+  public goBack(): void {
     this.location.back();
   }
 
-  private saveEvent(): void {
-    let savedEvent = new MyEvent();
+  public saveEvent(): void {
+    let savedEvent: MyEvent = new MyEvent();
     savedEvent.id = this.eventId;
     savedEvent.timeFrom = this.timeFrom;
     savedEvent.timeTo = this.timeTo;
@@ -49,14 +51,15 @@ constructor(
     savedEvent.year = this.year;
     savedEvent.userId = this.userId;
     this.eventsDb.editingEvent(savedEvent, this.deletedUsers);
+    this.addedMessage = true;
+    setTimeout(() => this.addedMessage = false, 2000);
   }
 
-  private inventedUsers(eventId){
-  function inventedUsers(id, users, usersEvents){
-    let usersIds = usersEvents.map(item => {
+  public inventedUsers(eventId: number): void {
+  function inventedUsers(id: number, users: User[], usersEvents: UserEventNode[]): User[] {
+    let usersIds: number[] = usersEvents.map(item => {
       if (item.eventID === id) { return item.userID; }
     });
-    console.log(users.filter(user => usersIds.includes(user.id)));
     return users.filter(user => usersIds.includes(user.id));
   }
   this.eventsDb.loadUsersEventsBase(eventId).subscribe(
@@ -65,22 +68,20 @@ constructor(
       this.invitedUsers = inventedUsers(eventId, users, usersEvents)
       .filter(x => x.id !== this.userId);
     }
-  );
+  , () => {throw new Error('error in invited users list loading procedure'); });
   }
 
-  private preAdd(i){
+  public preAdd(i: number): void {
     (this.invitedUsers).push(this.registratedUsers[i]);
-    let set = new Set(this.invitedUsers);
+    let set: Set<User> = new Set(this.invitedUsers);
     this.invitedUsers = Array.from(set);
-
   }
 
-  private preDeleteUser(item) {
-    let set = new Set(this.invitedUsers);
+  public preDeleteUser(item: User): void {
+    let set: Set<User> = new Set(this.invitedUsers);
     set.delete(item);
     this.deletedUsers.push(item);
     this.invitedUsers = Array.from(set);
-    console.log('deleted', this.deletedUsers);
   }
 
   public ngOnInit(): void {
@@ -96,8 +97,10 @@ constructor(
     this.year = this.editedEvent.year;
     this.userId = this.editedEvent.userId;
     this.inventedUsers(this.eventId);
-    this.eventsDb.loadUsersBase().subscribe((data) => {
+    this.eventsDb.loadUsersBase().subscribe(
+      (data) => {
       this.registratedUsers = data;
-    });
+    }
+    , () => {throw new Error('error in registrated users list loading procedure'); });
   }
 }

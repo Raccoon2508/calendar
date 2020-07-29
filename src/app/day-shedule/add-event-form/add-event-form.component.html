@@ -1,33 +1,30 @@
-<div class="form-group2">
-  <div class = 'addMessage' 
-  [class.show] = "addedMessage === true">
-    <h2>Event Added</h2>
-  </div>  
-
-
-  <h2>Add New Event</h2>
-  <label>Time From
+<div class="event-add-form">
+  
+  <h1 class = "event-add-form__title">Add New Event</h1>
+  <label class = "event-add-form__label">Time From
     <input
+    class = "event-add-form__time-from form-input"
     type = "time"
     [(ngModel)]= "timeFrom"
     #timeFromInput = "ngModel"
+    [class.uncorrect] = "timeFromInput.touched && timeFromInput.invalid"
     required>
   </label>
 
-  <label>Time To
+  <label class = "event-add-form__label">Time To
      <input 
      type = "time"
-     class="timeTo"
+     class="event-add-form__time-to form-input"
      [(ngModel)]= "timeTo"
      #timeToInput = 'ngModel'
      [class.uncorrect] = "timeToInput.touched && timeToInput.invalid"
      required>
    </label>
 
-  <label>Title 
+  <label class = "event-add-form__label">Title 
     <input
     type = "text"
-    class="title"
+    class="event-add-form__event-title form-input"
     #titleInput ="ngModel"
     [(ngModel)]= "title"
     [class.uncorrect] = "titleInput.touched && titleInput.invalid"
@@ -36,34 +33,48 @@
     >
   </label>
 
-  <label>Comment 
-    <textarea class="title" 
+  <label class = "event-add-form__label textarea">Comment 
+    <textarea
+    class="event-add-form__comment form-textarea" 
     rows = "4"
     [(ngModel)]= "comment"
     required>
     </textarea>
   </label>
 
-  <div class="tooked-part-users-list">
-    <h2>Invited users</h2>
-    <ul class="invented-users-list">
-      <li *ngFor = "let item of iventedUsers; index as i">{{item.name}} ({{item.email}})<button class="delete-button" (click) = "preDeleteUser(item)">X</button></li>
+
+  <h2 class = "event-add-form__title">Invited users</h2>
+  <div class="event-add-form__percipitians">
+    <ul class="event-add-form__percipitians-list">
+      <li *ngFor = "let item of iventedUsers; index as i"
+      class="event-add-form__percipitians-list-item"
+      >{{item.name}} ({{item.email}})
+        <button class="event-add-form__percipitians-delete-button"
+        (click) = "preDeleteUser(item)"
+        >X</button>
+      </li>
     </ul>
   </div>
 
-  <form action="formdata" method="post" name="participants-list">
-    <h2>Invite users by click on</h2>
-    <p>
-    <select name="list1" multiple>
-         <option *ngFor="let item of registratedUsers; index as i" (click) = "preAdd(i)">{{item.name}} ({{item.email}})</option>
-    </select></p>
-    <button (click)="sendInventedUsers()">Send</button>
+  <form action="formdata"
+        method="post"
+        name="participants-list"
+        class = "event-add-form__registrated-users">
+    <h2 class = "event-add-form__title">Select participants</h2>
+    <select name="list1"
+            class = "event-add-form__registrated-users-list"
+            multiple>
+         <option *ngFor="let item of registratedUsers; index as i"
+                 (click) = "preAdd(i)"
+                 class = "event-add-form__registrated-users-list-item"
+                 >{{item.name}} ({{item.email}})</option>
+    </select>
   </form>
    
   
-  <h3>Priority</h3>
-  <div class = "priority-radiobuttons">
-    <label>High
+  <h3 class = "event-add-form__priority-form-title">Priority</h3>
+  <div class = "event-add-form__priority-form-radiobuttons">
+    <label class = "event-add-form__priority-form-radiobuttons-label">High
       <input
       type = "radio"
       name="priority"
@@ -71,7 +82,7 @@
       [(ngModel)]= "priority">
     </label>
     
-    <label>Normal
+    <label class = "event-add-form__priority-form-radiobuttons-label">Normal
       <input type = "radio"
       name="priority"
       value="normal"
@@ -79,7 +90,7 @@
       >
     </label>
     
-    <label>Low
+    <label class = "event-add-form__priority-form-radiobuttons-label">Low
       <input
       type = "radio"
       name="priority"
@@ -88,15 +99,21 @@
     </label>
   </div>
   
-  <div class = "button-block">
+  <div class = "event-add-form__button-block">
   <button type="submit"
-  class="submit"
+  class = "event-add-form__button-submit" 
   (click)="onClick()"
   [disabled]="timeFromInput.invalid || timeToInput.invalid || titleInput.invalid">
   Add
   </button>
-  <button class="back" (click)="goBack()">Back</button>
-  </div>  
+  <button class="event-add-form__button-back"
+          (click)="goBack()">Back</button>
+  </div>
+
+  <div class = "event-add-form__event-edited-message_invisible" 
+  [class.show] = "addedMessage === true">
+    <h2 class = "event-add-form__title">Event Added</h2>
+  </div>    
 </div>  
 
 
