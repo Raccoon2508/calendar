@@ -16,7 +16,7 @@ export class LoginService {
       'email': email,
       'pass': pass
     };
-    return this.http.get(this.serverLoginUrl, {params: parametrs});
+    return this.http.get(`${this.serverLoginUrl}/api`, {params: parametrs});
   }
 
   public createUser(userObj: {[x: string]: string}): Observable<Object> {
