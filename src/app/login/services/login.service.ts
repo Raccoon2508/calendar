@@ -3,12 +3,12 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, throwError, of, from } from 'rxjs';
 import { UserObject } from '../user-object';
 import { User } from '../../services/user';
-
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class LoginService {
   public user: UserObject;
-  public serverLoginUrl: string = 'http://localhost:3000/api';
+  public serverLoginUrl: string =  environment.apiUrl;
 
   constructor( public http: HttpClient) { }
   public login(email: string, pass: string): Observable<Object> {
@@ -20,7 +20,7 @@ export class LoginService {
   }
 
   public createUser(userObj: {[x: string]: string}): Observable<Object> {
-    return this.http.post('http://localhost:3000/new-user', userObj);
+    return this.http.post(`${environment.apiUrl}/new-user`, userObj);
   }
 
 
