@@ -16,7 +16,7 @@ export class EventsListComponent implements OnInit {
   public sheduleYear: number = this.dayState.year;
   public sheduleMonth: number = this.dayState.month;
   public sheduleDay: number = this.dayState.day;
-  public eventsDataBase;
+  public eventsDataBase = [];
   constructor(public eventsDb: EventsDB, public dayState: DayState) { }
 
   public ngOnInit(): void {
