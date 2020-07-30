@@ -12,27 +12,27 @@ import { User, UserEventNode, SingleEvent } from '../../interfaces.service';
 })
 export class EditFormComponent implements OnInit {
 
-  private eventId: number;
-  private editedEvent: MyEvent = null;
-  private timeFrom: string;
-  private timeTo: string;
-  private title: string;
-  private comment: string;
-  private priority: string;
-  private day: number;
-  private month: number;
-  private year: number;
-  private userId: number;
-  private invitedUsers: User[];
-  private registratedUsers: User[];
-  private deletedUsers: User[] = [];
-  private addedMessage: Boolean = false;
+  public eventId: number;
+  public editedEvent: MyEvent = null;
+  public timeFrom: string;
+  public timeTo: string;
+  public title: string;
+  public comment: string;
+  public priority: string;
+  public day: number;
+  public month: number;
+  public year: number;
+  public userId: number;
+  public invitedUsers: User[];
+  public registratedUsers: User[];
+  public deletedUsers: User[] = [];
+  public addedMessage: Boolean = false;
 
 constructor(
-    private router: Router,
-    private activeRoute: ActivatedRoute,
-    private eventsDb: EventsDB,
-    private location: Location) { }
+    public router: Router,
+    public activeRoute: ActivatedRoute,
+    public eventsDb: EventsDB,
+    public location: Location) { }
 
   public goBack(): void {
     this.location.back();

@@ -13,10 +13,10 @@ import { User, SingleEvent, UserEventNode } from '../../interfaces.service';
 })
 
 export class EventsDB {
-  private loadedEvents: MyEvent[];
-  private eventUser: EventUser[];
-  private user: User;
-  private urls: {[key: string]: string} = {
+  public loadedEvents: MyEvent[];
+  public eventUser: EventUser[];
+  public user: User;
+  public urls: {[key: string]: string} = {
     baseUrl: `${environment.apiUrl}`,
     eventUserUrl: `${environment.apiUrl}/usersEvents`,
     eventsUrl: `${environment.apiUrl}/events`

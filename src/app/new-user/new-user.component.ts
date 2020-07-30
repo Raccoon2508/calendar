@@ -18,7 +18,7 @@ export class NewUserComponent implements OnInit {
     confirmPassword: new FormControl(""),
   });
 
-  constructor(private configService: ConfigService) { }
+  constructor(public configService: ConfigService) { }
 
   createNewUser(){
     let newUserPassword = this.newUserForm.value.password;

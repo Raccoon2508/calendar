@@ -11,16 +11,16 @@ import { MyEvent, EventBase, EventUser, User } from '../../day-shedule/models/ev
   styleUrls: ['./day.component.css']
 })
 export class DayComponent implements OnInit {
-  @Input() private dayNumber: number;
-  @Input() private currentMonthNumber: number;
-  @Input() private currentYear: number;
-  private dayId: string;
+  @Input() public dayNumber: number;
+  @Input() public currentMonthNumber: number;
+  @Input() public currentYear: number;
+  public dayId: string;
   public eventsStatusArray: Boolean[] = [];
 
-  constructor(private router: Router,
+  constructor(public router: Router,
               public dayState: DayState,
-              private eventsStatus: EventsDB,
-              private cdr: ChangeDetectorRef) {}
+              public eventsStatus: EventsDB,
+              public cdr: ChangeDetectorRef) {}
 
   public sheduleRouting<T>(day: T, month: T, year: T): void {
     this.dayId = `${year}${month}${day}`;

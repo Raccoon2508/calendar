@@ -21,14 +21,14 @@ export class EventsListComponent implements OnInit {
 
   public ngOnInit(): void {
     this.eventsDb.loadEvents().subscribe((item) => {
-      this.eventsDataBase = item.filter((x) =>{
-        return (+x.day === +this.sheduleDay&&
-        +x.month === +this.sheduleMonth&&
-        +x.year === +this.sheduleYear)
+      this.eventsDataBase = item.filter((x) => {
+        return (+x.day === +this.sheduleDay &&
+        +x.month === +this.sheduleMonth &&
+        +x.year === +this.sheduleYear);
       })
     });
   }
-  public ngOnChanges():void {
+  public ngOnChanges(): void {
       this.ngOnInit();
   }
   }

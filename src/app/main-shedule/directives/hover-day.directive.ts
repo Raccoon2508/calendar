@@ -7,7 +7,7 @@ import { HostListener } from '@angular/core';
 
 export class HoverDayDirective {
 
-    constructor( private elementRef: ElementRef, private renderer: Renderer2) {}
+    constructor( public elementRef: ElementRef, public renderer: Renderer2) {}
   
 
 

@@ -13,20 +13,20 @@ import { EventsDB } from '../../day-shedule/services/events.service';
   providers: [LoginService]
 })
 export class LoginComponent implements OnInit {
-  private email: string = 'asdf@mail.com';
-  private pass: string = '1234';
-  private errorMessage: boolean = false;
-  private registratedUsers: {[x: string]: string |number}[];
-  private passTextType: string = 'password';
+  public email: string = 'asdf@mail.com';
+  public pass: string = '1234';
+  public errorMessage: boolean = false;
+  public registratedUsers: {[x: string]: string |number}[];
+  public passTextType: string = 'password';
 
-  constructor(private loginService: LoginService,
-              private router: Router,
+  constructor(public loginService: LoginService,
+              public router: Router,
               public changeRef: ChangeDetectorRef,
               public views: ApplicationRef,
               public eventsDB: EventsDB,
               public cdr: ChangeDetectorRef) { }
 
-  private login(): void {
+  public login(): void {
     this.loginService.login(this.email, this.pass).subscribe((item: UserObject) => {
       if (item.userID) {
         this.loginService.loginUser(item);
@@ -40,12 +40,12 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  private showPass(): void {
+  public showPass(): void {
     if (this.passTextType === 'password') { this.passTextType = 'text';
   } else { this.passTextType = 'password'; }
   }
 
-  private registerNewUser(): void {
+  public registerNewUser(): void {
     this.loginService.logoutUser();
     this.router.navigate(['new-user']);
   }

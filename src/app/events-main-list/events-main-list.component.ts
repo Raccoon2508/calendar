@@ -13,17 +13,17 @@ import { NgControl } from '@angular/forms';
   providers: [EventsDB, EventsMainListService]
 })
 export class EventsMainListComponent implements OnInit {
-  @ViewChild('allOrForthSwitch', {static: false}) private allOrForthSwitch: ElementRef;
-  @ViewChild('selectList', {static: false}) private selectList: ElementRef;
-  private eventsLoadedBase: [string, object[]][];
-  private priority: string = '';
-  private allForth: Boolean = false;
+  @ViewChild('allOrForthSwitch', {static: false}) public allOrForthSwitch: ElementRef;
+  @ViewChild('selectList', {static: false}) public selectList: ElementRef;
+  public eventsLoadedBase: [string, object[]][];
+  public priority: string = '';
+  public allForth: Boolean = false;
 
-  constructor(private eventsBase: EventsDB,
-              private mainListService: EventsMainListService,
-              private router: Router,
-              private ref: ElementRef,
-              private cdr: ChangeDetectorRef) { }
+  constructor(public eventsBase: EventsDB,
+              public mainListService: EventsMainListService,
+              public router: Router,
+              public ref: ElementRef,
+              public cdr: ChangeDetectorRef) { }
 
   public routingToCalendar(): void {
     this.router.navigate(['']);

@@ -7,10 +7,10 @@ import { User } from '../../services/user';
 
 @Injectable()
 export class LoginService {
-  private user: UserObject;
-  private serverLoginUrl: string = 'http://localhost:3000/api';
+  public user: UserObject;
+  public serverLoginUrl: string = 'http://localhost:3000/api';
 
-  constructor( private http: HttpClient) { }
+  constructor( public http: HttpClient) { }
   public login(email: string, pass: string): Observable<Object> {
     let parametrs = {
       'email': email,

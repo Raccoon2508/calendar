@@ -14,7 +14,7 @@ export class ButtonsComponent implements OnInit {
   public currentYear: number;
   public currentMonthNumber: number;
   public yearSwitcherCounter: number;
-  constructor(private router: Router) {
+  constructor(public router: Router) {
     let monthNamesTempleArr: string[] = [];
     for (let item of monthNames) {
       monthNamesTempleArr.push(item.name + '');
@@ -22,11 +22,11 @@ export class ButtonsComponent implements OnInit {
     this.monthNamesArr = monthNamesTempleArr;
   }
 
-private navigateToMainList(): void {
+public navigateToMainList(): void {
   this.router.navigate(['events-full-list']);
 }
 
-private leftMonthSwither(): number {
+public leftMonthSwither(): number {
   if (this.currentMonthNumber === 0) {
     this.leftYearSwither();
   }
@@ -37,7 +37,7 @@ private leftMonthSwither(): number {
   return this.currentMonthNumber;
   }
 
-private rightMonthSwither(): number {
+public rightMonthSwither(): number {
     if (this.currentMonthNumber === 11) {
       this.rightYearSwither();
     }
@@ -47,21 +47,21 @@ private rightMonthSwither(): number {
     return this.currentMonthNumber;
   }
 
-private leftYearSwither(): number {
+public leftYearSwither(): number {
     this.yearSwitcherCounter--;
     this.currentYear = this.yearSwitcherCounter;
     localStorage.setItem('currentYear', this.currentYear + '');
     return this.currentYear;
   }
 
-private rightYearSwither(): number {
+public rightYearSwither(): number {
     this.yearSwitcherCounter++;
     this.currentYear = this.yearSwitcherCounter;
     localStorage.setItem('currentYear', this.currentYear + '');
     return this.currentYear;
   }
 
-private currentMonthSwitcher(): void {
+public currentMonthSwitcher(): void {
     localStorage.removeItem('currentMonth');
     localStorage.removeItem('currentYear');
     this.ngOnInit();

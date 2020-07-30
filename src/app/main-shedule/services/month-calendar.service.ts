@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 
 export class CalendarService {
 
-private selectedId: number;
+public selectedId: number;
 
 public monthArray: (number | string)[];
 

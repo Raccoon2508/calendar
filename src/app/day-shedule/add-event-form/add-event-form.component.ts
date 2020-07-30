@@ -13,21 +13,21 @@ import { NullTemplateVisitor } from '@angular/compiler';
 })
 
 export class AddEventFormComponent implements OnInit {
-  private title: string;
-  private timeTo: string;
-  private timeFrom: string;
-  private comment: string;
-  private priority: string;
-  private id: string;
-  private addedMessage: boolean = false;
-  private eventedUsers: string[];
-  private registratedUsers: {[x: string]: string|number}[];
-  private sheduleYear: number = 2020;
-  private sheduleMonth: number = 2;
-  private sheduleDay: number = 14;
-  private userID: number = +localStorage.getItem('calendarUserId');
-  private iventedUsers: Set<{[x: string]: string|number}> = new Set();
-  private eventObj: MyEvent = {
+  public title: string;
+  public timeTo: string;
+  public timeFrom: string;
+  public comment: string;
+  public priority: string;
+  public id: string;
+  public addedMessage: boolean = false;
+  public eventedUsers: string[];
+  public registratedUsers: {[x: string]: string|number}[];
+  public sheduleYear: number = 2020;
+  public sheduleMonth: number = 2;
+  public sheduleDay: number = 14;
+  public userID: number = +localStorage.getItem('calendarUserId');
+  public iventedUsers: Set<{[x: string]: string|number}> = new Set();
+  public eventObj: MyEvent = {
     id: 0,
     userId: +localStorage.getItem('calendarUserId'),
     year: 0,
@@ -40,22 +40,22 @@ export class AddEventFormComponent implements OnInit {
     priority: 'normal'
   };
 
-  private connectionEventUser: EventUser = {
+  public connectionEventUser: EventUser = {
     userID: 0,
     eventID: 0
   };
 
-  constructor(private eventsDataBase: EventsDB,
-              private router: Router,
-              private location: Location,
-              private dayState: DayState,
-              private cdr: ChangeDetectorRef) {}
+  constructor(public eventsDataBase: EventsDB,
+              public router: Router,
+              public location: Location,
+              public dayState: DayState,
+              public cdr: ChangeDetectorRef) {}
 
-  private goBack(): void {
+  public goBack(): void {
     this.location.back();
   }
 
-  private onClick(): void {
+  public onClick(): void {
     this.eventObj.id = Date.now();
     this.eventObj.year = this.dayState.year;
     this.eventObj.month = this.dayState.month;
@@ -75,11 +75,11 @@ export class AddEventFormComponent implements OnInit {
     (this.eventsDataBase.eventsBase.usersEvents).push(this.connectionEventUser);
   }
 
- private preAdd(i: number): void {
+ public preAdd(i: number): void {
     if (i !== this.userID) {(this.iventedUsers).add(this.registratedUsers[i]); }
   }
 
-  private preDeleteUser(item: {[x: string]: string|number}): void {
+  public preDeleteUser(item: {[x: string]: string|number}): void {
     (this.iventedUsers).delete(item);
   }
 

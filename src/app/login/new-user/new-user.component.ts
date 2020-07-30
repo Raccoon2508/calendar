@@ -13,27 +13,27 @@ import { Router } from '@angular/router';
 })
 
 export class NewUserComponent implements OnInit {
-  private passTextType: string = 'password';
-  private firstPass: string = '';
-  private secondPass: string = '';
-  private email: string = '';
-  private userName: string = '';
-  private correctRepeatedPass: Boolean = false;
-  private correctEmail: Boolean = false;
-  private correctName: Boolean = false;
-  private userCard: {[x: string]: string} = {};
-  private userCreatedMessage: Boolean = false;
-  private userExist: Boolean = false;
+  public passTextType: string = 'password';
+  public firstPass: string = '';
+  public secondPass: string = '';
+  public email: string = '';
+  public userName: string = '';
+  public correctRepeatedPass: Boolean = false;
+  public correctEmail: Boolean = false;
+  public correctName: Boolean = false;
+  public userCard: {[x: string]: string} = {};
+  public userCreatedMessage: Boolean = false;
+  public userExist: Boolean = false;
 
-  constructor(private location: Location,
-              private loginService: LoginService,
-              private router: Router) {}
+  constructor(public location: Location,
+              public loginService: LoginService,
+              public router: Router) {}
 
-  private goBack(): void {
+  public goBack(): void {
     this.location.back();
   }
 
-  private createUser(): void {
+  public createUser(): void {
     console.log(this.userCard);
     this.userCard.name = this.userName;
     this.userCard.email = this.email;

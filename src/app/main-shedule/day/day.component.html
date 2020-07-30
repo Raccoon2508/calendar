@@ -1,12 +1,12 @@
 <div class="day" 
 hoverDay (click) = "sheduleRouting(dayNumber, currentMonthNumber, currentYear)"
-*ngIf="dayNumber!==''">
+*ngIf="dayNumber">
     <p class="day__number" >
       {{ dayNumber }}
     </p>
     
     <div class="day__events-panel">
-        <div class="day__events-container" *ngIf="dayNumber!==''">
+        <div class="day__events-container" *ngIf="dayNumber">
         <div  class="day__events-container-symbol" *ngFor = "let item of eventsStatusArray">x</div>
         </div>
     </div>

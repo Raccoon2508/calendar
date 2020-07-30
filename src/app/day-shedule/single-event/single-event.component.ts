@@ -11,11 +11,11 @@ import { MyEvent } from '../models/event';
 export class SingleEventComponent implements OnInit {
   @Input() singleEvent;
   @Input() eventId;
-  @Output() emmited: EventEmitter<any> = new EventEmitter();
+  @Output() public emmited: EventEmitter<any> = new EventEmitter();
 
-  constructor( private router: Router, 
-               private eventsServise: EventsDB,
-               private cdr: ChangeDetectorRef) { }
+  constructor( public router: Router, 
+               public eventsServise: EventsDB,
+               public cdr: ChangeDetectorRef) { }
 
   public editEventFunc(): void {
     this.router.navigate(['edit/' + this.singleEvent.id], {state: this.singleEvent});
@@ -27,7 +27,6 @@ export class SingleEventComponent implements OnInit {
     this.emmited.emit();
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
   }
-
 }

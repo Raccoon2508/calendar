@@ -10,16 +10,14 @@ import { MyEvent } from '../models/event';
   styleUrls: ['./day-shedule-list.component.css']
 })
 export class DaySheduleListComponent implements OnInit {
-  private currentUrl: string = this.router.url;
-  private currentDateObj: object;
-  private sheduleDay: number;
-  private sheduleMonth: number;
-  private sheduleYear: number;
- 
-
-  constructor(private router: Router,
-              private activeRoute: ActivatedRoute,
-              private dayState: DayState) {}
+  public currentUrl: string = this.router.url;
+  public currentDateObj: object;
+  public sheduleDay: number;
+  public sheduleMonth: number;
+  public sheduleYear: number;
+  constructor(public router: Router,
+              public activeRoute: ActivatedRoute,
+              public dayState: DayState) {}
 
   public addRouting(): void {
     this.router.navigate([this.currentUrl, 'newEvent']);

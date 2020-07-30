@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 
 export class DaySheduleComponent {
   public swissTime;
-  constructor(private router:Router){}
+  constructor(public router:Router){}
   public time = new Observable<Date>(obs =>{
     setInterval(()=>obs.next(new Date),1000)
   }).pipe(

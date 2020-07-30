@@ -36,9 +36,9 @@ export class HeaderComponent implements OnInit {
       }
   });
 
-  constructor(private configService: ConfigService,
-              private router: Router,
-              private ref: ChangeDetectorRef) { }
+  constructor(public configService: ConfigService,
+              public router: Router,
+              public ref: ChangeDetectorRef) { }
 
   public ngOnInit(): void {
     this.currentTime = new Observable((obs) => {
