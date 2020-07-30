@@ -56,7 +56,7 @@ public sendInvitedUsers(usersArr: User[], eventId: number): void {
   this.http.post(this.urls.baseUrl + '/invite-users', arrUserEvent).subscribe();
 }
 
-public postEvent(postedEvent: SingleEvent): void {
+public postEvent(postedEvent): void {
   this.http.post(this.urls.baseUrl + '/add', postedEvent).subscribe();
 }
 

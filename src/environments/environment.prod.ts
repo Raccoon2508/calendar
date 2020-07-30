@@ -1,6 +1,4 @@
-import { process } from 'node';
-
 export const environment = {
   production: true,
-  apiUrl: 'https://auth-server-for-calendar.herokuapp.com';
+  apiUrl: 'https://auth-server-for-calendar.herokuapp.com'
 };
