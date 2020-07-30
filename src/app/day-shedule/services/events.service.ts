@@ -1,11 +1,12 @@
-import { MyEvent, EventBase, EventUser, User } from '../models/event';
+import { MyEvent, EventBase, EventUser } from '../models/event';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError, of, from, concat, zip } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 import { catchError, retry } from 'rxjs/operators';
 import { nextTick } from 'process';
-
+import { environment } from '../../../environments/environment';
+import { User, SingleEvent, UserEventNode } from '../../interfaces.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,11 +16,10 @@ export class EventsDB {
   private loadedEvents: MyEvent[];
   private eventUser: EventUser[];
   private user: User;
-  private baseUrl: string = 'http://localhost:3000/';
   private urls: {[key: string]: string} = {
-    baseUrl: 'http://localhost:3000/',
-    eventUserUrl: 'http://localhost:3000/usersEvents',
-    eventsUrl: 'http://localhost:3000/events'
+    baseUrl: `${environment.apiUrl}`,
+    eventUserUrl: `${environment.apiUrl}/usersEvents`,
+    eventsUrl: `${environment.apiUrl}/events`
   };
 
   public eventsBase: EventBase = {
@@ -45,18 +45,18 @@ export class EventsDB {
 
 constructor( public http: HttpClient ) {}
 
-public getBase(day?: number, month?: number, year?: number, userId?: number) {
+public getBase(): Observable<any> {
   return this.http.get(this.urls.eventsUrl);
 }
 
-public sendInvitedUsers(usersArr, eventId){
-  let arrUserEvent = usersArr.map((user) => {
-    return {'userID': user.id, 'eventID': eventId}
+public sendInvitedUsers(usersArr: User[], eventId: number): void {
+  let arrUserEvent: {[x: string]: number|string}[] = usersArr.map((user) => {
+    return {'userID': user.id, 'eventID': eventId};
   })
   this.http.post(this.urls.baseUrl + '/invite-users', arrUserEvent).subscribe();
 }
 
-public postEvent(postedEvent): void {
+public postEvent(postedEvent: SingleEvent): void {
   this.http.post(this.urls.baseUrl + '/add', postedEvent).subscribe();
 }
 
@@ -64,11 +64,12 @@ public deleteEvent(event: number, user: number): void {
   this.http.post(this.urls.baseUrl + `/delete-event`, {eventID: event, userID: user}).subscribe();
 }
 
-public editingEvent(editedEvent: MyEvent, deletedInvitedUsers): void {
-  let deletedUserEventsArr = deletedInvitedUsers
+public editingEvent(editedEvent: MyEvent, deletedInvitedUsers: User[]): void {
+  let deletedUserEventsArr: UserEventNode[] = deletedInvitedUsers
   .map(item => {return {userID: item.id, eventID: editedEvent.id}; });
 
-  let editedEventInfo = {event: editedEvent, deletedUsers: deletedUserEventsArr};
+  let editedEventInfo =
+   {event: editedEvent, deletedUsers: deletedUserEventsArr};
 
   this.http.post(this.urls.baseUrl + '/edit', editedEventInfo).subscribe();
 }
@@ -90,11 +91,9 @@ public loadUsersEventsBase(eventId): any{
 
 public deleteParticipant(deletedUsers, eventId){
   let deletedParticipantsForPost = deletedUsers.map((x)=>{
-    return {userID: x.id, eventID: eventId}
+    return {userID: x.id, eventID: eventId};
   });
   console.log(deletedParticipantsForPost);
   this.http.post(this.urls.baseUrl + '/delete-participants', deletedParticipantsForPost).subscribe();
 }
-
-
 }
